@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_action_home"
+        android:title="Home"
+        android:visible="true"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/menu_agents"
+        android:enabled="true"
+        android:icon="@drawable/ic_action_agents"
+        android:title="Agents"
+        android:visible="true"
+        app:showAsAction="always|withText" />
+</menu>
