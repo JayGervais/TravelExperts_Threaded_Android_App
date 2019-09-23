@@ -80,7 +80,9 @@ public class AddAgentActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 Agency agency = (Agency) spinnerAgencies.getSelectedItem();
-                AgentDBHelper.UpdateAgentData(null, etAgtFirstName.getText().toString(),
+
+                AgentDBHelper.UpdateAgent(null,
+                        etAgtFirstName.getText().toString(),
                         etAgtMiddleInitial.getText().toString(),
                         etAgtLastName.getText().toString(),
                         etAgtBusPhone.getText().toString(),
@@ -89,7 +91,9 @@ public class AddAgentActivity extends AppCompatActivity
                         String.valueOf(agency.getAgencyId()),
                         //etAgencyId.getText().toString(),
                         "sait_oosd_2019_updateSecret",
-                        "https://infastory.com/api/agent_add.php");
+                        "https://infastory.com/api/agent_add.php",
+                        AddAgentActivity.this);
+
                 Toast.makeText(AddAgentActivity.this, "New Agent Added", Toast.LENGTH_LONG).show();
                 Intent savedIntent = new Intent(AddAgentActivity.this, AgentListActivity.class);
                 AddAgentActivity.this.startActivity(savedIntent);

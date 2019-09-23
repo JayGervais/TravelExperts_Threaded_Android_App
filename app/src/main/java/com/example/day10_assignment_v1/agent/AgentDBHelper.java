@@ -1,13 +1,20 @@
 package com.example.day10_assignment_v1.agent;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Pair;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.day10_assignment_v1.agency.Agency;
 
 import org.apache.http.HttpEntity;
@@ -29,59 +36,66 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AgentDBHelper
 {
-    // load agent data
-    public static void UpdateAgentData(final String agentId, final String agtFirstName, final String agtMiddleInitial,
-                                       final String agtLastName, final String agtBusPhone, final String agtEmail,
-                                       final String agtPosition, final String agencyId, final String apiSecret, final String url)
+    // update agent function used for both creating and updating agents (using volley)
+    public static void UpdateAgent(final String agentId, final String agtFirstName, final String agtMiddleInitial,
+                                   final String agtLastName, final String agtBusPhone, final String agtEmail,
+                                   final String agtPosition, final String agencyId, final String apiSecret,
+                                   final String url, final Context context)
     {
-        class SendPostReqAsyncTask extends AsyncTask<String, Void, String>
+        final StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>()
         {
             @Override
-            protected String doInBackground(String... params)
+            public void onResponse(String ServerResponse)
             {
-                List<NameValuePair> values = new ArrayList<>();
-                values.add(new BasicNameValuePair("agentId", agentId));
-                values.add(new BasicNameValuePair("agtFirstName", agtFirstName));
-                values.add(new BasicNameValuePair("agtMiddleInitial", agtMiddleInitial));
-                values.add(new BasicNameValuePair("agtLastName", agtLastName));
-                values.add(new BasicNameValuePair("agtBusPhone", agtBusPhone));
-                values.add(new BasicNameValuePair("agtEmail", agtEmail));
-                values.add(new BasicNameValuePair("agtPosition", agtPosition));
-                values.add(new BasicNameValuePair("agencyId", agencyId));
-                values.add(new BasicNameValuePair("apiSecret", apiSecret));
+                ProgressDialog progressDialog = new ProgressDialog(context);
+                progressDialog.dismiss();
 
-                try
-                {
-                    HttpClient httpClient = new DefaultHttpClient();
-                    HttpPost httpPost = new HttpPost(url);
-                    httpPost.setEntity(new UrlEncodedFormEntity(values));
-                    HttpResponse httpResponse = httpClient.execute(httpPost);
-                    HttpEntity httpEntity = httpResponse.getEntity();
-
-                } catch (ClientProtocolException e)
-                {
-                } catch (IOException e)
-                {
-                    return "Could not update database";
-                }
-                return "Agent Updated Successfully";
+                Toast.makeText(context, ServerResponse, Toast.LENGTH_LONG).show();
             }
+        },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError)
+                    {
+                        ProgressDialog progressDialog = new ProgressDialog(context);
+                        progressDialog.dismiss();
 
+                        Toast.makeText(context, volleyError.toString(), Toast.LENGTH_LONG).show();
+                    }
+                })
+        {
             @Override
-            protected void onPostExecute(String result)
+            protected Map<String, String> getParams()
             {
-                super.onPostExecute(result);
+                Map<String, String> parameters = new HashMap<>();
+
+                if (agentId != null)
+                {
+                    parameters.put("agentId", agentId);
+                }
+                parameters.put("agtFirstName", agtFirstName);
+                parameters.put("agtMiddleInitial", agtMiddleInitial);
+                parameters.put("agtLastName", agtLastName);
+                parameters.put("agtBusPhone", agtBusPhone);
+                parameters.put("agtEmail", agtEmail);
+                parameters.put("agtPosition", agtPosition);
+                parameters.put("agencyId", agencyId);
+                parameters.put("apiSecret", apiSecret);
+                return parameters;
             }
-        }
-        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(agencyId, agtFirstName, agtMiddleInitial, agtLastName, agtBusPhone, agtEmail, agtPosition, agencyId, apiSecret);
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(request);
     }
 
-    // delete agent data
+    // delete agent method to remove from database
     public static void DeleteAgent(final String agentId, final String apiSecret)
     {
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String>
@@ -120,71 +134,7 @@ public class AgentDBHelper
         sendPostReqAsyncTask.execute(agentId, apiSecret);
     }
 
-    // get agency data for dropdown menu
-    public static void GetAgencyData(final String urlWebService, final Context context, final Spinner spinner)
-    {
-        class DownloadJSON extends AsyncTask<Void, Void, String>
-        {
-
-            @Override
-            protected void onPreExecute()
-            {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected void onPostExecute(String s)
-            {
-                super.onPostExecute(s);
-                try
-                {
-                    JSONArray jsonArray = new JSONArray(s);
-                    String[] agency = new String[jsonArray.length()];
-                    ArrayAdapter<Agency> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1);
-                    for (int i = 0; i < jsonArray.length(); i++)
-                    {
-                        JSONObject obj = jsonArray.getJSONObject(i);
-
-                        arrayAdapter.add(new Agency(
-                                Integer.parseInt(obj.getString("AgencyId")),
-                                obj.getString("AgncyAddress"),
-                                obj.getString("AgncyCity")));
-
-                        agency[i] = obj.getString("AgencyId") + " " + obj.getString("AgncyAddress") + " " + obj.getString("AgncyCity");
-                    }
-                    spinner.setAdapter(arrayAdapter);
-                } catch (JSONException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            protected String doInBackground(Void... voids)
-            {
-                try
-                {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null)
-                    {
-                        sb.append(json + "\n");
-                    }
-                    return sb.toString().trim();
-                } catch (Exception e)
-                {
-                    return null;
-                }
-            }
-        }
-        DownloadJSON getJSON = new DownloadJSON();
-        getJSON.execute();
-    }
-
-    // get agent list data
+    // get agent data and display in list view
     public static void GetAgentListData(final String urlWebService, final Context cont, final ListView list)
     {
         class DownloadJSON extends AsyncTask<Void, Void, String>
@@ -252,8 +202,72 @@ public class AgentDBHelper
         getJSON.execute();
     }
 
+    // get agency data to display in drop down menu
+    public static void GetAgencyData(final String urlWebService, final Context context, final Spinner spinner)
+    {
+        class DownloadJSON extends AsyncTask<Void, Void, String>
+        {
+
+            @Override
+            protected void onPreExecute()
+            {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s)
+            {
+                super.onPostExecute(s);
+                try
+                {
+                    JSONArray jsonArray = new JSONArray(s);
+                    String[] agency = new String[jsonArray.length()];
+                    ArrayAdapter<Agency> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1);
+                    for (int i = 0; i < jsonArray.length(); i++)
+                    {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+
+                        arrayAdapter.add(new Agency(
+                                Integer.parseInt(obj.getString("AgencyId")),
+                                obj.getString("AgncyAddress"),
+                                obj.getString("AgncyCity")));
+
+                        agency[i] = obj.getString("AgencyId") + " " + obj.getString("AgncyAddress") + " " + obj.getString("AgncyCity");
+                    }
+                    spinner.setAdapter(arrayAdapter);
+                } catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... voids)
+            {
+                try
+                {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null)
+                    {
+                        sb.append(json + "\n");
+                    }
+                    return sb.toString().trim();
+                } catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
+    }
+
     // saves agency text for agent
-    public static void GetAgentListData(final String urlWebService, final Context cont, final EditText txt)
+    public static void GetAgentListString(final String urlWebService, final Context cont, final EditText txt)
     {
         class DownloadJSON extends AsyncTask<Void, Void, String>
         {
@@ -314,4 +328,16 @@ public class AgentDBHelper
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }

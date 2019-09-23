@@ -86,15 +86,13 @@ public class AgentDetailActivity extends AppCompatActivity
         // set spinner data
         spinAgencies.setVisibility(View.INVISIBLE);
 
-        //etAgency.setText(String.valueOf(agent.getAgencyId()));
-
+        // set text for agency
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("https").authority("infastory.com").appendPath("api").appendPath("agent_spinner_select.php")
                 .appendQueryParameter("AgencyId", String.valueOf(agent.getAgencyId()));
         String myUrl = builder.build().toString();
 
-
-        AgentDBHelper.GetAgentListData(myUrl,
+        AgentDBHelper.GetAgentListString(myUrl,
                 AgentDetailActivity.this, etAgency);
 
         textFieldEnabled(false);
@@ -141,7 +139,7 @@ public class AgentDetailActivity extends AppCompatActivity
             {
                 // getAgentTextData();
                 Agency agentSelect = (Agency) spinAgencies.getSelectedItem();
-                AgentDBHelper.UpdateAgentData(etAgentId.getText().toString(),
+                AgentDBHelper.UpdateAgent(etAgentId.getText().toString(),
                         etAgtFirstName.getText().toString(),
                         etAgtMiddleInitial.getText().toString(),
                         etAgtLastName.getText().toString(),
@@ -150,7 +148,8 @@ public class AgentDetailActivity extends AppCompatActivity
                         etAgtPosition.getText().toString(),
                         String.valueOf(agentSelect.getAgencyId()),
                         "api_updateAgent_activitySecret",
-                        "https://infastory.com/api/agent_update.php");
+                        "https://infastory.com/api/agent_update.php",
+                        AgentDetailActivity.this);
                 Toast.makeText(AgentDetailActivity.this, "Changes Saved", Toast.LENGTH_LONG).show();
                 Intent savedIntent = new Intent(AgentDetailActivity.this, AgentListActivity.class);
                 AgentDetailActivity.this.startActivity(savedIntent);
