@@ -2,6 +2,7 @@ package com.example.day10_assignment_v1.agent;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Pair;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -137,7 +138,21 @@ public class AgentDBHelper
                 super.onPostExecute(s);
                 try
                 {
-                    loadAgencyDataIntoListView(s, context, spinner);
+                    JSONArray jsonArray = new JSONArray(s);
+                    String[] agency = new String[jsonArray.length()];
+                    ArrayAdapter<Agency> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1);
+                    for (int i = 0; i < jsonArray.length(); i++)
+                    {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+
+                        arrayAdapter.add(new Agency(
+                                Integer.parseInt(obj.getString("AgencyId")),
+                                obj.getString("AgncyAddress"),
+                                obj.getString("AgncyCity")));
+
+                        agency[i] = obj.getString("AgencyId") + " " + obj.getString("AgncyAddress") + " " + obj.getString("AgncyCity");
+                    }
+                    spinner.setAdapter(arrayAdapter);
                 } catch (JSONException e)
                 {
                     e.printStackTrace();
@@ -167,25 +182,6 @@ public class AgentDBHelper
         }
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
-    }
-
-    private static void loadAgencyDataIntoListView(String json, Context context, Spinner spinner) throws JSONException
-    {
-        JSONArray jsonArray = new JSONArray(json);
-        String[] agency = new String[jsonArray.length()];
-        ArrayAdapter<Agency> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1);
-        for (int i = 0; i < jsonArray.length(); i++)
-        {
-            JSONObject obj = jsonArray.getJSONObject(i);
-
-            arrayAdapter.add(new Agency(
-                    Integer.parseInt(obj.getString("AgencyId")),
-                    obj.getString("AgncyAddress"),
-                    obj.getString("AgncyCity")));
-
-            agency[i] = obj.getString("AgencyId") + " " + obj.getString("AgncyAddress") + " " + obj.getString("AgncyCity");
-        }
-        spinner.setAdapter(arrayAdapter);
     }
 
     // get agent list data
@@ -206,7 +202,25 @@ public class AgentDBHelper
                 super.onPostExecute(s);
                 try
                 {
-                    loadAgentListView(s, cont, list);
+                    JSONArray jsonArray = new JSONArray(s);
+                    String[] agents = new String[jsonArray.length()];
+                    ArrayAdapter<Agent> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
+                    for (int i = 0; i < jsonArray.length(); i++)
+                    {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+
+                        arrayAdapter.add(new Agent(Integer.parseInt(obj.getString("AgentId")),
+                                obj.getString("AgtFirstName"),
+                                obj.getString("AgtMiddleInitial"),
+                                obj.getString("AgtLastName"),
+                                obj.getString("AgtBusPhone"),
+                                obj.getString("AgtEmail"),
+                                obj.getString("AgtPosition"),
+                                Integer.parseInt(obj.getString("AgencyId"))));
+
+                        agents[i] = obj.getString("AgtFirstName") + " " + obj.getString("AgtLastName");
+                    }
+                    list.setAdapter(arrayAdapter);
                 } catch (JSONException e)
                 {
                     e.printStackTrace();
@@ -236,29 +250,6 @@ public class AgentDBHelper
         }
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
-    }
-
-    private static void loadAgentListView(String json, Context cont, ListView list) throws JSONException
-    {
-        JSONArray jsonArray = new JSONArray(json);
-        String[] agents = new String[jsonArray.length()];
-        ArrayAdapter<Agent> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
-        for (int i = 0; i < jsonArray.length(); i++)
-        {
-            JSONObject obj = jsonArray.getJSONObject(i);
-
-            arrayAdapter.add(new Agent(Integer.parseInt(obj.getString("AgentId")),
-                    obj.getString("AgtFirstName"),
-                    obj.getString("AgtMiddleInitial"),
-                    obj.getString("AgtLastName"),
-                    obj.getString("AgtBusPhone"),
-                    obj.getString("AgtEmail"),
-                    obj.getString("AgtPosition"),
-                    Integer.parseInt(obj.getString("AgencyId"))));
-
-            agents[i] = obj.getString("AgtFirstName") + " " + obj.getString("AgtLastName");
-        }
-        list.setAdapter(arrayAdapter);
     }
 
     // saves agency text for agent
@@ -278,7 +269,21 @@ public class AgentDBHelper
                 super.onPostExecute(s);
                 try
                 {
-                    getTextAgencyData(s, cont, txt);
+                    JSONArray jsonArray = new JSONArray(s);
+                    String[] agency = new String[jsonArray.length()];
+                    ArrayAdapter<Agency> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
+                    for (int i = 0; i < jsonArray.length(); i++)
+                    {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+
+                        arrayAdapter.add(new Agency(Integer.parseInt(
+                                obj.getString("AgencyId")),
+                                obj.getString("AgncyAddress"),
+                                obj.getString("AgncyCity")));
+
+                        agency[i] = obj.getString("AgncyAddress") + ", " + obj.getString("AgncyCity");
+                    }
+                    txt.setText(agency[0]);
                 } catch (JSONException e)
                 {
                     e.printStackTrace();
@@ -308,24 +313,5 @@ public class AgentDBHelper
         }
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
-    }
-
-    private static void getTextAgencyData(String json, Context cont, EditText txt) throws JSONException
-    {
-        JSONArray jsonArray = new JSONArray(json);
-        String[] agency = new String[jsonArray.length()];
-        ArrayAdapter<Agency> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
-        for (int i = 0; i < jsonArray.length(); i++)
-        {
-            JSONObject obj = jsonArray.getJSONObject(i);
-
-            arrayAdapter.add(new Agency(Integer.parseInt(
-                    obj.getString("AgencyId")),
-                    obj.getString("AgncyAddress"),
-                    obj.getString("AgncyCity")));
-
-            agency[i] = obj.getString("AgncyAddress") + ", " + obj.getString("AgncyCity");
-        }
-        txt.setText(agency[0]);
     }
 }
