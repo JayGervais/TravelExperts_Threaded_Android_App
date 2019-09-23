@@ -168,7 +168,10 @@ public class AgentDetailActivity extends AppCompatActivity
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton)
                             {
-                                AgentDBHelper.DeleteAgent(etAgentId.getText().toString(), "api_secretKey_deleteAgent");
+                                AgentDBHelper.DeleteAgent(etAgentId.getText().toString(),
+                                        "api_secretKey_deleteAgent",
+                                        "https://infastory.com/api/agent_delete.php",
+                                        AgentDetailActivity.this);
                                 Toast.makeText(AgentDetailActivity.this, "Agent Deleted Successfully", Toast.LENGTH_LONG).show();
                                 Intent savedIntent = new Intent(AgentDetailActivity.this, AgentListActivity.class);
                                 AgentDetailActivity.this.startActivity(savedIntent);

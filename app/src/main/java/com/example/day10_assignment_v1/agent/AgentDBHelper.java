@@ -55,7 +55,6 @@ public class AgentDBHelper
             {
                 ProgressDialog progressDialog = new ProgressDialog(context);
                 progressDialog.dismiss();
-
                 Toast.makeText(context, ServerResponse, Toast.LENGTH_LONG).show();
             }
         },
@@ -66,7 +65,6 @@ public class AgentDBHelper
                     {
                         ProgressDialog progressDialog = new ProgressDialog(context);
                         progressDialog.dismiss();
-
                         Toast.makeText(context, volleyError.toString(), Toast.LENGTH_LONG).show();
                     }
                 })
@@ -75,7 +73,6 @@ public class AgentDBHelper
             protected Map<String, String> getParams()
             {
                 Map<String, String> parameters = new HashMap<>();
-
                 if (agentId != null)
                 {
                     parameters.put("agentId", agentId);
@@ -95,43 +92,40 @@ public class AgentDBHelper
         requestQueue.add(request);
     }
 
-    // delete agent method to remove from database
-    public static void DeleteAgent(final String agentId, final String apiSecret)
+    // delete agent function (using volley)
+    public static void DeleteAgent(final String agentId, final String apiSecret,
+                                   final String url, final Context context)
     {
-        class SendPostReqAsyncTask extends AsyncTask<String, Void, String>
+        final StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>()
         {
             @Override
-            protected String doInBackground(String... params)
+            public void onResponse(String ServerResponse)
             {
-                List<NameValuePair> values = new ArrayList<>();
-                values.add(new BasicNameValuePair("agentId", agentId));
-                values.add(new BasicNameValuePair("apiSecret", apiSecret));
-
-                try
-                {
-                    HttpClient httpClient = new DefaultHttpClient();
-                    HttpPost httpPost = new HttpPost("https://infastory.com/api/agent_delete.php");
-                    httpPost.setEntity(new UrlEncodedFormEntity(values));
-                    HttpResponse httpResponse = httpClient.execute(httpPost);
-                    HttpEntity httpEntity = httpResponse.getEntity();
-
-                } catch (ClientProtocolException e)
-                {
-                } catch (IOException e)
-                {
-                    return "Could not update database";
-                }
-                return "Agent Deleted Successfully";
+                ProgressDialog progressDialog = new ProgressDialog(context);
+                progressDialog.dismiss();
             }
-
+        },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError)
+                    {
+                        ProgressDialog progressDialog = new ProgressDialog(context);
+                        progressDialog.dismiss();
+                    }
+                })
+        {
             @Override
-            protected void onPostExecute(String result)
+            protected Map<String, String> getParams()
             {
-                super.onPostExecute(result);
+                Map<String, String> parameters = new HashMap<>();
+                parameters.put("agentId", agentId);
+                parameters.put("apiSecret", apiSecret);
+                return parameters;
             }
-        }
-        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(agentId, apiSecret);
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(request);
     }
 
     // get agent data and display in list view
