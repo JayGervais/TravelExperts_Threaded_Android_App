@@ -308,15 +308,4 @@ public class AgentDBHelper
         getJSON.execute();
     }
 
-
-
-
-
-
-
-
-
-
-
-
 }

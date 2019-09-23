@@ -93,7 +93,6 @@ public class AddAgentActivity extends AppCompatActivity
                         "sait_oosd_2019_updateSecret",
                         "https://infastory.com/api/agent_add.php",
                         AddAgentActivity.this);
-
                 Toast.makeText(AddAgentActivity.this, "New Agent Added", Toast.LENGTH_LONG).show();
                 Intent savedIntent = new Intent(AddAgentActivity.this, AgentListActivity.class);
                 AddAgentActivity.this.startActivity(savedIntent);

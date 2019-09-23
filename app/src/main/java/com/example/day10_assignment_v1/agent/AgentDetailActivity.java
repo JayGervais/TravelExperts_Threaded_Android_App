@@ -69,7 +69,7 @@ public class AgentDetailActivity extends AppCompatActivity
         btnDelete = findViewById(R.id.btnDelete);
         btnCancel = findViewById(R.id.btnCancel);
 
-        Agent agent = (Agent) getIntent().getSerializableExtra("agent");
+        final Agent agent = (Agent) getIntent().getSerializableExtra("agent");
 
         etAgentId.setText(String.valueOf(agent.getAgentId()));
         etAgtFirstName.setText(agent.getAgtFirstName());
@@ -81,14 +81,15 @@ public class AgentDetailActivity extends AppCompatActivity
         etAgtBusPhone.setText(agent.getAgtBusPhone());
         etAgtEmail.setText(agent.getAgtEmail());
         etAgtPosition.setText(agent.getAgtPosition());
-        // etAgency.setText(String.valueOf(agent.getAgencyId()));
 
         // set spinner data
         spinAgencies.setVisibility(View.INVISIBLE);
 
         // set text for agency
         Uri.Builder builder = new Uri.Builder();
-        builder.scheme("https").authority("infastory.com").appendPath("api").appendPath("agent_spinner_select.php")
+        builder.scheme("https").authority("infastory.com")
+                .appendPath("api")
+                .appendPath("agent_spinner_select.php")
                 .appendQueryParameter("AgencyId", String.valueOf(agent.getAgencyId()));
         String myUrl = builder.build().toString();
 
@@ -127,6 +128,7 @@ public class AgentDetailActivity extends AppCompatActivity
                 btnEdit.setEnabled(false);
                 btnDelete.setEnabled(true);
                 spinAgencies.setVisibility(View.VISIBLE);
+                spinAgencies.setSelection(agent.getAgencyId()-1);
                 etAgency.setVisibility(View.INVISIBLE);
             }
         });
