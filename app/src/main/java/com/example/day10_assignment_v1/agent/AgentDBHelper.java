@@ -7,7 +7,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,27 +16,15 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.day10_assignment_v1.agency.Agency;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class AgentDBHelper
@@ -55,7 +42,6 @@ public class AgentDBHelper
             {
                 ProgressDialog progressDialog = new ProgressDialog(context);
                 progressDialog.dismiss();
-                Toast.makeText(context, ServerResponse, Toast.LENGTH_LONG).show();
             }
         },
                 new Response.ErrorListener()
@@ -65,7 +51,6 @@ public class AgentDBHelper
                     {
                         ProgressDialog progressDialog = new ProgressDialog(context);
                         progressDialog.dismiss();
-                        Toast.makeText(context, volleyError.toString(), Toast.LENGTH_LONG).show();
                     }
                 })
         {
