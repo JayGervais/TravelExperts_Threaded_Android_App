@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,6 +55,72 @@ public class BookingDBHelper
                     }
 
                     list.setAdapter(arrayAdapter);
+                } catch (JSONException e)
+                {
+                    e.printStackTrace();
+                } catch (ParseException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            protected String doInBackground(Void... voids)
+            {
+                try
+                {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null)
+                    {
+                        sb.append(json + "\n");
+                    }
+                    return sb.toString().trim();
+                } catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
+    }
+
+    // get booking summary data and display in fragment
+    public static void BookingFragmentListData(final String urlWebService, final Context cont,
+                                               final TextView bookingDate, final TextView bookingNum)
+    {
+        class DownloadJSON extends AsyncTask<Void, Void, String>
+        {
+            @Override
+            protected void onPreExecute()
+            {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s)
+            {
+                super.onPostExecute(s);
+                try
+                {
+                    JSONArray jsonArray = new JSONArray(s);
+                    String[] bookings = new String[jsonArray.length()];
+                    ArrayAdapter<Booking> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
+                    for (int i = 0; i < jsonArray.length(); i++)
+                    {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+                        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.ENGLISH);
+
+                        arrayAdapter.add(new Booking(obj.getInt("BookingId"),
+                                obj.getString("BookingNo"),
+                                dateFormat.parse(obj.getString("BookingDate"))));
+
+                        bookingDate.setText(obj.getString("BookingDate"));
+                        bookingNum.setText(obj.getString("BookingNo"));
+                    }
                 } catch (JSONException e)
                 {
                     e.printStackTrace();

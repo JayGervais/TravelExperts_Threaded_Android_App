@@ -2,6 +2,7 @@ package com.example.day10_assignment_v1.booking;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.example.day10_assignment_v1.agent.AgentListActivity;
 public class BookingListActivity extends AppCompatActivity
 {
     ListView listBookings;
+    // Fragment fragmentBookingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
