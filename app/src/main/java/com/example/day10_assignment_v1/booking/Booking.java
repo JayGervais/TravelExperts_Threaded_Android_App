@@ -1,7 +1,11 @@
 package com.example.day10_assignment_v1.booking;
 
-import android.icu.text.DateFormat;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Currency;
 import java.util.Date;
+import java.util.Locale;
 
 public class Booking
 {
@@ -10,25 +14,40 @@ public class Booking
     private String BookingNo;
     private String CustomerId;
     private Integer TravelerCount;
+    private String Description;
     private String TravelType;
     private String BookingDetail;
     private String Region;
     private String TripType;
     private String Destination;
-    private Integer BasePrice;
-    private Integer AgencyCommission;
+    private BigDecimal BasePrice;
+    private BigDecimal AgencyCommission;
 
-    public Booking(Integer bookingId, String bookingNo, Date bookingDate)
+    public Booking(Integer bookingId, String bookingNo, Date bookingDate, Integer travelerCount, String description, BigDecimal basePrice, BigDecimal agencyCommission)
     {
+
         BookingId = bookingId;
         BookingNo = bookingNo;
         BookingDate = bookingDate;
+        TravelerCount = travelerCount;
+        Description = description;
+        BasePrice = basePrice;
+        AgencyCommission = agencyCommission;
     }
 
     @Override
     public String toString()
     {
-        return BookingNo + ": " + BookingDate;
+        // format dates
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String format = formatter.format(BookingDate);
+        // format currency values
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
+        String baseFormat = currencyFormat.format(BasePrice);
+        String commissionFormat = currencyFormat.format(AgencyCommission);
+
+        return format + " - " + Description + "\n" +
+                "Base: " + baseFormat + ", Commission: " + commissionFormat;
     }
 
 
@@ -57,6 +76,11 @@ public class Booking
         return TravelerCount;
     }
 
+    public String getDescription()
+    {
+        return Description;
+    }
+
     public String getTravelType()
     {
         return TravelType;
@@ -82,12 +106,12 @@ public class Booking
         return Destination;
     }
 
-    public Integer getBasePrice()
+    public BigDecimal getBasePrice()
     {
         return BasePrice;
     }
 
-    public Integer getAgencyCommission()
+    public BigDecimal getAgencyCommission()
     {
         return AgencyCommission;
     }
@@ -117,6 +141,11 @@ public class Booking
         TravelerCount = travelerCount;
     }
 
+    public void setTravelerCount(String description)
+    {
+        Description = description;
+    }
+
     public void setTravelType(String travelType)
     {
         TravelType = travelType;
@@ -142,12 +171,12 @@ public class Booking
         Destination = destination;
     }
 
-    public void setBasePrice(Integer basePrice)
+    public void setBasePrice(BigDecimal basePrice)
     {
         BasePrice = basePrice;
     }
 
-    public void setAgencyCommission(Integer agencyCommission)
+    public void setAgencyCommission(BigDecimal agencyCommission)
     {
         AgencyCommission = agencyCommission;
     }

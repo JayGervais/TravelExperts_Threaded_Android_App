@@ -13,17 +13,14 @@ import android.widget.TextView;
 
 import com.example.day10_assignment_v1.R;
 
-import static com.example.day10_assignment_v1.R.id.fragmentBookingList;
-import static com.example.day10_assignment_v1.R.id.tvBookingDate;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BookingListFragment extends Fragment
+public class BookingDetailFragment extends Fragment
 {
     TextView tvBookingDate, tvBookingNumber, tvTravelerCount, tvDestination, tvBasePrice, tvAgencyCommission;
 
-    public BookingListFragment()
+    public BookingDetailFragment()
     {
         // Required empty public constructor
     }
@@ -33,7 +30,7 @@ public class BookingListFragment extends Fragment
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_booking_list, container, false);
+        return inflater.inflate(R.layout.layout_booking_list, container, false);
     }
 
     @Override
@@ -47,7 +44,7 @@ public class BookingListFragment extends Fragment
         tvBasePrice = getActivity().findViewById(R.id.tvBasePrice);
         tvAgencyCommission = getActivity().findViewById(R.id.tvAgencyCommission);
 
-        BookingDBHelper.BookingFragmentListData("https://infastory.com/api/booking_data.php", getView().getContext(), tvBookingDate, tvBookingNumber);
+        //BookingDBHelper.BookingFragmentListData("https://infastory.com/api/booking_data.php", getView().getContext(), tvBookingDate, tvBookingNumber);
     }
 
 
