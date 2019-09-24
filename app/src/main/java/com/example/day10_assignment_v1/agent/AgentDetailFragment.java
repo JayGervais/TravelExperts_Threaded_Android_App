@@ -19,12 +19,12 @@ import com.example.day10_assignment_v1.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AgentDetail extends Fragment
+public class AgentDetailFragment extends Fragment
 {
     EditText etAgentId, etAgtFirstName, etAgtMiddleInitial, etAgtLastName, etAgtBusPhone, etAgtEmail, etAgtPosition;
     Spinner spinAgencies;
 
-    public AgentDetail()
+    public AgentDetailFragment()
     {
         // Required empty public constructor
     }
