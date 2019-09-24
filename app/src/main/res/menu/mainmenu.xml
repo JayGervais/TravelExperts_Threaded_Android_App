@@ -16,4 +16,11 @@
         android:title="Agents"
         android:visible="true"
         app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/menu_bookings"
+        android:enabled="true"
+        android:icon="@drawable/ic_action_booking"
+        android:title="Bookings"
+        android:visible="true"
+        app:showAsAction="always|withText" />
 </menu>

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.day10_assignment_v1.agent.AgentListActivity;
+import com.example.day10_assignment_v1.booking.BookingListActivity;
 
 
 public class MainActivity extends AppCompatActivity
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity
                 return true;
             case R.id.menu_agents:
                 startActivity(new Intent(this, AgentListActivity.class));
+                return true;
+            case R.id.menu_bookings:
+                startActivity(new Intent(this, BookingListActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);

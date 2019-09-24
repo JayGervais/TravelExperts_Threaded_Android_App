@@ -118,7 +118,6 @@ public class AgentDBHelper
     {
         class DownloadJSON extends AsyncTask<Void, Void, String>
         {
-
             @Override
             protected void onPreExecute()
             {
