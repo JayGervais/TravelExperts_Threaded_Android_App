@@ -2,7 +2,6 @@ package com.example.day10_assignment_v1.booking;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,17 +11,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
-import com.example.day10_assignment_v1.agent.Agent;
-import com.example.day10_assignment_v1.agent.AgentDetailActivity;
 import com.example.day10_assignment_v1.agent.AgentListActivity;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BookingListActivity extends AppCompatActivity
 {
     ListView listBookings;
+    TextView txtBookingDate, txtBookingDescription, txtBasePrice, txtCommission;
+
     // Fragment fragmentBookingList;
+    ArrayList<HashMap<String, String>> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,7 +34,15 @@ public class BookingListActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_list);
 
+        txtBookingDate = findViewById(R.id.txtBookingDate);
+        txtBookingDescription = findViewById(R.id.txtBookingDescription);
+        txtBasePrice = findViewById(R.id.tvBasePrice);
+        txtCommission = findViewById(R.id.txtCommission);
+
         listBookings = findViewById(R.id.listBookings);
+
+        BookingDBHelper.BookingListData("https://infastory.com/api/booking_data.php",
+                BookingListActivity.this, listBookings, txtBookingDate, txtBookingDescription);
 
         listBookings.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -41,7 +53,6 @@ public class BookingListActivity extends AppCompatActivity
             }
         });
 
-        BookingDBHelper.BookingSummaryListData("https://infastory.com/api/booking_data.php", this, listBookings);
     }
 
     @Override
