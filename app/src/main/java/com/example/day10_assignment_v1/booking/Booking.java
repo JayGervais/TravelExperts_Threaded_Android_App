@@ -58,71 +58,58 @@ public class Booking implements Serializable
         String baseFormat = currencyFormat.format(BasePrice);
         String commissionFormat = currencyFormat.format(AgencyCommission);
 
-        return dateFormat + ": " + Description + "\n" +
+        return dateFormat + "\n" + Description + "\n" +
                 "Base: " + baseFormat + ", Commission: " + commissionFormat;
     }
-
 
     public Integer getBookingId()
     {
         return BookingId;
     }
-
     public Date getBookingDate()
     {
         return BookingDate;
     }
-
     public String getBookingNo()
     {
         return BookingNo;
     }
-
     public String getCustomerId()
     {
         return CustomerId;
     }
-
     public Integer getTravelerCount()
     {
         return TravelerCount;
     }
-
     public String getDescription()
     {
         return Description;
     }
-
     public String getTravelType()
     {
         return TravelType;
     }
-
     public String getBookingDetail()
     {
         return BookingDetail;
     }
-
     public String getRegion()
     {
         return Region;
     }
-
     public String getTripType()
     {
         return TripType;
     }
-
     public String getDestination()
     {
         return Destination;
     }
-
     public BigDecimal getBasePrice()
     {
         return BasePrice;
     }
-
     public BigDecimal getAgencyCommission()
     {
         return AgencyCommission;
@@ -132,62 +119,50 @@ public class Booking implements Serializable
     {
         BookingId = bookingId;
     }
-
     public void setBookingDate(Date bookingDate)
     {
         BookingDate = bookingDate;
     }
-
     public void setBookingNo(String bookingNo)
     {
         BookingNo = bookingNo;
     }
-
     public void setCustomerId(String customerId)
     {
         CustomerId = customerId;
     }
-
     public void setTravelerCount(Integer travelerCount)
     {
         TravelerCount = travelerCount;
     }
-
     public void setTravelerCount(String description)
     {
         Description = description;
     }
-
     public void setTravelType(String travelType)
     {
         TravelType = travelType;
     }
-
     public void setBookingDetail(String bookingDetail)
     {
         BookingDetail = bookingDetail;
     }
-
     public void setRegion(String region)
     {
         Region = region;
     }
-
     public void setTripType(String tripType)
     {
         TripType = tripType;
     }
-
     public void setDestination(String destination)
     {
         Destination = destination;
     }
-
     public void setBasePrice(BigDecimal basePrice)
     {
         BasePrice = basePrice;
     }
-
     public void setAgencyCommission(BigDecimal agencyCommission)
     {
         AgencyCommission = agencyCommission;
