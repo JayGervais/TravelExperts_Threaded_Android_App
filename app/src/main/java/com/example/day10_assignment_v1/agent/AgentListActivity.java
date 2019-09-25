@@ -4,29 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.booking.BookingListActivity;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class AgentListActivity extends AppCompatActivity
 {
@@ -63,7 +52,7 @@ public class AgentListActivity extends AppCompatActivity
             }
         });
 
-        AgentDBHelper.GetAgentListData("https://infastory.com/api/agent_data.php", this, listAgents);
+        AgentDB.GetAgentListData("https://infastory.com/api/agent_data.php", this, listAgents);
     }
 
     @Override

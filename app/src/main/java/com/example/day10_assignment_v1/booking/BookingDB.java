@@ -21,7 +21,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-public class BookingDBHelper
+public class BookingDB
 {
     // get booking summary data to display in fragment
     public static void BookingListData(final String urlWebService, final Context cont, final ListView list)
@@ -95,7 +95,6 @@ public class BookingDBHelper
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
     }
-
 
     public static void BookingData(final String urlWebService, final Context cont,
                                    final TextView tvBookingDate, final TextView tvBookingNo,
@@ -198,7 +197,5 @@ public class BookingDBHelper
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
     }
-
-
 
 }

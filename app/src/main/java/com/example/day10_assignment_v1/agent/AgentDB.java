@@ -27,7 +27,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AgentDBHelper
+public class AgentDB
 {
     // update agent function used for both creating and updating agents (using volley)
     public static void UpdateAgent(final String agentId, final String agtFirstName, final String agtMiddleInitial,

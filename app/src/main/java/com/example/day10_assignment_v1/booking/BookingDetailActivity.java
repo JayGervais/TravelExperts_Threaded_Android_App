@@ -10,10 +10,6 @@ import android.view.MenuItem;
 
 import com.example.day10_assignment_v1.R;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class BookingDetailActivity extends AppCompatActivity
 {
     TextView tvBookingDate, tvBookingNumber, tvTravelerCount, tvDestination, tvBasePrice, tvAgencyCommission;
@@ -56,7 +52,7 @@ public class BookingDetailActivity extends AppCompatActivity
                 .appendQueryParameter("BookingId", String.valueOf(booking.getBookingId()));
         String bookingAPI = bookingURL.build().toString();
 
-        BookingDBHelper.BookingData(bookingAPI, this, tvBookingDate, tvBookingNumber, tvTravelerCount,
+        BookingDB.BookingData(bookingAPI, this, tvBookingDate, tvBookingNumber, tvTravelerCount,
                 tvDestination, tvBasePrice, tvAgencyCommission);
 
     }
