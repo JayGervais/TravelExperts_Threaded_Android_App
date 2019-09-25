@@ -141,18 +141,25 @@ public class BookingDBHelper
 
                         // set variables
                         bookings[i] = obj.getInt("BookingId") + obj.getString("BookingDate");
-                        bDate[i] = obj.getString("BookingDate");
+
+                        // date format
+                        String bDateFormat = String.valueOf(formatter.parse(obj.getString("BookingDate")));
+                        bDate[i] = bDateFormat;
+
                         bNo[i] = obj.getString("BookingNo");
                         bTravelers[i] = obj.getString("TravelerCount");
                         bDest[i] = obj.getString("Destination");
-                        bBPrice[i] = obj.getString("BasePrice");
-                        bComm[i] = obj.getString("AgencyCommission");
+
+                        // currency formatting
+                        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
+                        String baseFormat = currencyFormat.format(BigDecimal.valueOf(obj.getDouble("BasePrice")));
+                        String bComFormat = currencyFormat.format(BigDecimal.valueOf(obj.getDouble("AgencyCommission")));
+                        bBPrice[i] = baseFormat;
+                        bComm[i] = bComFormat;
                     }
 
-                    String bookDateFormat = String.valueOf(formatter.parse(bDate[0]));
-
                     // set text fields
-                    tvBookingDate.setText(bookDateFormat);
+                    tvBookingDate.setText(bDate[0]);
                     tvBookingNo.setText(bNo[0]);
                     tvTravelerCount.setText(bTravelers[0]);
                     tvDestination.setText(bDest[0]);
