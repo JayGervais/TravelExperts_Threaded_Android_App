@@ -1,5 +1,7 @@
 package com.example.day10_assignment_v1.booking;
 
+import android.net.Uri;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
@@ -8,8 +10,13 @@ import android.view.MenuItem;
 
 import com.example.day10_assignment_v1.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class BookingDetailActivity extends AppCompatActivity
 {
+    TextView tvBookingDate, tvBookingNumber, tvTravelerCount, tvDestination, tvBasePrice, tvAgencyCommission;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -33,5 +40,24 @@ public class BookingDetailActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final Booking booking = (Booking) getIntent().getSerializableExtra("booking");
+
+        tvBookingDate = findViewById(R.id.tvBookingDate);
+        tvBookingNumber = findViewById(R.id.tvBookingNumber);
+        tvTravelerCount = findViewById(R.id.tvTravelerCount);
+        tvDestination = findViewById(R.id.tvDestination);
+        tvBasePrice = findViewById(R.id.tvBasePrice);
+        tvAgencyCommission = findViewById(R.id.tvAgencyCommission);
+
+        // string builder for api call
+        Uri.Builder bookingURL = new Uri.Builder();
+        bookingURL.scheme("https").authority("infastory.com")
+                .appendPath("api")
+                .appendPath("booking_data_select.php")
+                .appendQueryParameter("BookingId", String.valueOf(booking.getBookingId()));
+        String bookingAPI = bookingURL.build().toString();
+
+        BookingDBHelper.BookingData(bookingAPI, this, tvBookingDate, tvBookingNumber, tvTravelerCount,
+                tvDestination, tvBasePrice, tvAgencyCommission);
+
     }
 }
