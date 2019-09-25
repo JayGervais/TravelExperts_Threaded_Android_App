@@ -69,7 +69,7 @@ public class AgentDetailActivity extends AppCompatActivity
         btnDelete = findViewById(R.id.btnDelete);
         btnCancel = findViewById(R.id.btnCancel);
 
-        Agent agent = (Agent) getIntent().getSerializableExtra("agent");
+        final Agent agent = (Agent) getIntent().getSerializableExtra("agent");
 
         etAgentId.setText(String.valueOf(agent.getAgentId()));
         etAgtFirstName.setText(agent.getAgtFirstName());
@@ -81,20 +81,19 @@ public class AgentDetailActivity extends AppCompatActivity
         etAgtBusPhone.setText(agent.getAgtBusPhone());
         etAgtEmail.setText(agent.getAgtEmail());
         etAgtPosition.setText(agent.getAgtPosition());
-        // etAgency.setText(String.valueOf(agent.getAgencyId()));
 
         // set spinner data
         spinAgencies.setVisibility(View.INVISIBLE);
 
-        //etAgency.setText(String.valueOf(agent.getAgencyId()));
-
+        // set text for agency
         Uri.Builder builder = new Uri.Builder();
-        builder.scheme("https").authority("infastory.com").appendPath("api").appendPath("agent_spinner_select.php")
+        builder.scheme("https").authority("infastory.com")
+                .appendPath("api")
+                .appendPath("agent_spinner_select.php")
                 .appendQueryParameter("AgencyId", String.valueOf(agent.getAgencyId()));
         String myUrl = builder.build().toString();
 
-
-        AgentDBHelper.GetAgentListData(myUrl,
+        AgentDBHelper.GetAgentListString(myUrl,
                 AgentDetailActivity.this, etAgency);
 
         textFieldEnabled(false);
@@ -129,6 +128,7 @@ public class AgentDetailActivity extends AppCompatActivity
                 btnEdit.setEnabled(false);
                 btnDelete.setEnabled(true);
                 spinAgencies.setVisibility(View.VISIBLE);
+                spinAgencies.setSelection(agent.getAgencyId()-1);
                 etAgency.setVisibility(View.INVISIBLE);
             }
         });
@@ -141,7 +141,7 @@ public class AgentDetailActivity extends AppCompatActivity
             {
                 // getAgentTextData();
                 Agency agentSelect = (Agency) spinAgencies.getSelectedItem();
-                AgentDBHelper.UpdateAgentData(etAgentId.getText().toString(),
+                AgentDBHelper.UpdateAgent(etAgentId.getText().toString(),
                         etAgtFirstName.getText().toString(),
                         etAgtMiddleInitial.getText().toString(),
                         etAgtLastName.getText().toString(),
@@ -150,7 +150,8 @@ public class AgentDetailActivity extends AppCompatActivity
                         etAgtPosition.getText().toString(),
                         String.valueOf(agentSelect.getAgencyId()),
                         "api_updateAgent_activitySecret",
-                        "https://infastory.com/api/agent_update.php");
+                        "https://infastory.com/api/agent_update.php",
+                        AgentDetailActivity.this);
                 Toast.makeText(AgentDetailActivity.this, "Changes Saved", Toast.LENGTH_LONG).show();
                 Intent savedIntent = new Intent(AgentDetailActivity.this, AgentListActivity.class);
                 AgentDetailActivity.this.startActivity(savedIntent);
@@ -169,7 +170,10 @@ public class AgentDetailActivity extends AppCompatActivity
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton)
                             {
-                                AgentDBHelper.DeleteAgent(etAgentId.getText().toString(), "api_secretKey_deleteAgent");
+                                AgentDBHelper.DeleteAgent(etAgentId.getText().toString(),
+                                        "api_secretKey_deleteAgent",
+                                        "https://infastory.com/api/agent_delete.php",
+                                        AgentDetailActivity.this);
                                 Toast.makeText(AgentDetailActivity.this, "Agent Deleted Successfully", Toast.LENGTH_LONG).show();
                                 Intent savedIntent = new Intent(AgentDetailActivity.this, AgentListActivity.class);
                                 AgentDetailActivity.this.startActivity(savedIntent);

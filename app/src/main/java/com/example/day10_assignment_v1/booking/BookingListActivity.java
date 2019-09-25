@@ -1,69 +1,45 @@
-package com.example.day10_assignment_v1.agent;
+package com.example.day10_assignment_v1.booking;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
-import com.example.day10_assignment_v1.booking.BookingListActivity;
+import com.example.day10_assignment_v1.agent.Agent;
+import com.example.day10_assignment_v1.agent.AgentDetailActivity;
+import com.example.day10_assignment_v1.agent.AgentListActivity;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-public class AgentListActivity extends AppCompatActivity
+public class BookingListActivity extends AppCompatActivity
 {
-    ListView listAgents;
-    Button btnAddNewAgent;
+    ListView listBookings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agent_list);
+        setContentView(R.layout.activity_booking_list);
 
-        btnAddNewAgent = findViewById(R.id.btnAddNewAgent);
-        listAgents = findViewById(R.id.listAgents);
+        listBookings = findViewById(R.id.listBookings);
 
-        listAgents.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        listBookings.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Intent intent = new Intent(getApplicationContext(), AgentDetailActivity.class);
-                intent.putExtra("agent", (Agent) listAgents.getItemAtPosition(position));
-                startActivity(intent);
+
             }
         });
 
-        btnAddNewAgent.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent addAgentIntent = new Intent(AgentListActivity.this, AddAgentActivity.class);
-                AgentListActivity.this.startActivity(addAgentIntent);
-            }
-        });
-
-        AgentDBHelper.GetAgentListData("https://infastory.com/api/agent_data.php", this, listAgents);
+        BookingDBHelper.BookingSummaryListData("https://infastory.com/api/booking_data.php", this, listBookings);
     }
 
     @Override
