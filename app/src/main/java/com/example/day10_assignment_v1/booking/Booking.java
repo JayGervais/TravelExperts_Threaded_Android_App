@@ -1,13 +1,13 @@
 package com.example.day10_assignment_v1.booking;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.Currency;
 import java.util.Date;
 import java.util.Locale;
 
-public class Booking
+public class Booking implements Serializable
 {
     private Integer BookingId;
     private Date BookingDate;
@@ -23,7 +23,13 @@ public class Booking
     private BigDecimal BasePrice;
     private BigDecimal AgencyCommission;
 
-    public Booking(Integer bookingId, String bookingNo, Date bookingDate, Integer travelerCount, String description, BigDecimal basePrice, BigDecimal agencyCommission)
+    public Booking(Integer bookingId,
+                   String bookingNo,
+                   Date bookingDate,
+                   Integer travelerCount,
+                   String description,
+                   BigDecimal basePrice,
+                   BigDecimal agencyCommission)
     {
 
         BookingId = bookingId;
@@ -35,18 +41,24 @@ public class Booking
         AgencyCommission = agencyCommission;
     }
 
+    public Booking(Integer bookingId, Date bookingDate)
+    {
+        BookingId = bookingId;
+        BookingDate = bookingDate;
+    }
+
     @Override
     public String toString()
     {
         // format dates
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String format = formatter.format(BookingDate);
+        String dateFormat = formatter.format(BookingDate);
         // format currency values
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
         String baseFormat = currencyFormat.format(BasePrice);
         String commissionFormat = currencyFormat.format(AgencyCommission);
 
-        return format + " - " + Description + "\n" +
+        return dateFormat + ": " + Description + "\n" +
                 "Base: " + baseFormat + ", Commission: " + commissionFormat;
     }
 
