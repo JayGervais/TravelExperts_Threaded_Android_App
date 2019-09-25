@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.agency.Agency;
 
@@ -81,7 +80,7 @@ public class AddAgentActivity extends AppCompatActivity
             {
                 Agency agency = (Agency) spinnerAgencies.getSelectedItem();
 
-                AgentDBHelper.UpdateAgent(null,
+                AgentDB.UpdateAgent(null,
                         etAgtFirstName.getText().toString(),
                         etAgtMiddleInitial.getText().toString(),
                         etAgtLastName.getText().toString(),
@@ -109,7 +108,7 @@ public class AddAgentActivity extends AppCompatActivity
             }
         });
 
-        AgentDBHelper.GetAgencyData("https://infastory.com/api/agency_dropdown.php", this, spinnerAgencies);
+        AgentDB.GetAgencyData("https://infastory.com/api/agency_dropdown.php", this, spinnerAgencies);
     }
 
 

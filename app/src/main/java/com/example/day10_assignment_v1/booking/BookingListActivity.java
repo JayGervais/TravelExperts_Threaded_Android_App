@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,12 +15,7 @@ import android.widget.TextView;
 
 import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
-import com.example.day10_assignment_v1.agent.Agent;
-import com.example.day10_assignment_v1.agent.AgentDetailActivity;
 import com.example.day10_assignment_v1.agent.AgentListActivity;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BookingListActivity extends AppCompatActivity
 {
@@ -52,7 +46,7 @@ public class BookingListActivity extends AppCompatActivity
             }
         });
 
-        BookingDBHelper.BookingListData("https://infastory.com/api/booking_data.php",
+        BookingDB.BookingListData("https://infastory.com/api/booking_data.php",
                 this, listBookings);
     }
 

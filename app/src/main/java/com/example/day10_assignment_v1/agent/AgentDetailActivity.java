@@ -87,7 +87,7 @@ public class AgentDetailActivity extends AppCompatActivity
                 .appendQueryParameter("AgencyId", String.valueOf(agent.getAgencyId()));
         String myUrl = builder.build().toString();
 
-        AgentDBHelper.GetAgentListString(myUrl,
+        AgentDB.GetAgentListString(myUrl,
                 AgentDetailActivity.this, etAgency);
 
         textFieldEnabled(false);
@@ -135,7 +135,7 @@ public class AgentDetailActivity extends AppCompatActivity
             {
                 // getAgentTextData();
                 Agency agentSelect = (Agency) spinAgencies.getSelectedItem();
-                AgentDBHelper.UpdateAgent(etAgentId.getText().toString(),
+                AgentDB.UpdateAgent(etAgentId.getText().toString(),
                         etAgtFirstName.getText().toString(),
                         etAgtMiddleInitial.getText().toString(),
                         etAgtLastName.getText().toString(),
@@ -164,7 +164,7 @@ public class AgentDetailActivity extends AppCompatActivity
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton)
                             {
-                                AgentDBHelper.DeleteAgent(etAgentId.getText().toString(),
+                                AgentDB.DeleteAgent(etAgentId.getText().toString(),
                                         "api_secretKey_deleteAgent",
                                         "https://infastory.com/api/agent_delete.php",
                                         AgentDetailActivity.this);
@@ -186,7 +186,7 @@ public class AgentDetailActivity extends AppCompatActivity
             }
         });
 
-        AgentDBHelper.GetAgencyData("https://infastory.com/api/agency_dropdown.php", this, spinAgencies);
+        AgentDB.GetAgencyData("https://infastory.com/api/agency_dropdown.php", this, spinAgencies);
     }
 
     public void textFieldEnabled(boolean enabled)
