@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,19 +14,13 @@ import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Currency;
-import java.util.Locale;
-
-import static java.lang.Long.parseLong;
 
 public class BookingDBHelper
 {
     // get booking summary data to display in fragment
-    public static void BookingListData(final String urlWebService, final Context cont, final ListView list,
-                                               final TextView bookingDate, final TextView bookingNum)
+    public static void BookingListData(final String urlWebService, final Context cont, final ListView list)
     {
         class DownloadJSON extends AsyncTask<Void, Void, String>
         {
@@ -45,6 +38,7 @@ public class BookingDBHelper
                 {
                     JSONArray jsonArray = new JSONArray(s);
                     String[] bookings = new String[jsonArray.length()];
+
                     ArrayAdapter<Booking> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
                     for (int i = 0; i < jsonArray.length(); i++)
                     {
@@ -59,9 +53,12 @@ public class BookingDBHelper
                                 obj.getString("Description"),
                                 BigDecimal.valueOf(obj.getDouble("BasePrice")),
                                 BigDecimal.valueOf(obj.getDouble("AgencyCommission"))));
+
+                        bookings[i] = obj.getInt("BookingId") + obj.getString("BookingDate");
                     }
 
                     list.setAdapter(arrayAdapter);
+
                 } catch (JSONException e)
                 {
                     e.printStackTrace();

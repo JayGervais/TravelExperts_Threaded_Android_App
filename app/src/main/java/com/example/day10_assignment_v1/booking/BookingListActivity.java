@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 
 import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
+import com.example.day10_assignment_v1.agent.Agent;
+import com.example.day10_assignment_v1.agent.AgentDetailActivity;
 import com.example.day10_assignment_v1.agent.AgentListActivity;
 
 import java.util.ArrayList;
@@ -24,9 +27,6 @@ public class BookingListActivity extends AppCompatActivity
 {
     ListView listBookings;
     TextView txtBookingDate, txtBookingDescription, txtBasePrice, txtCommission;
-
-    // Fragment fragmentBookingList;
-    ArrayList<HashMap<String, String>> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,18 +41,19 @@ public class BookingListActivity extends AppCompatActivity
 
         listBookings = findViewById(R.id.listBookings);
 
-        BookingDBHelper.BookingListData("https://infastory.com/api/booking_data.php",
-                BookingListActivity.this, listBookings, txtBookingDate, txtBookingDescription);
-
         listBookings.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-
+                Intent intent = new Intent(getApplicationContext(), BookingDetailActivity.class);
+                intent.putExtra("booking", (Booking) listBookings.getItemAtPosition(position));
+                startActivity(intent);
             }
         });
 
+        BookingDBHelper.BookingListData("https://infastory.com/api/booking_data.php",
+                this, listBookings);
     }
 
     @Override
