@@ -28,7 +28,7 @@ public class CustomerDetailActivity extends AppCompatActivity {
         etCustPostal = findViewById(R.id.etCustPostal);
         etCustCountry=findViewById(R.id.etCustCountry);
         etCustHomePhone = findViewById(R.id.etCustHomePhone);
-        etCustBusPhone=findViewById(R.id.);
+        etCustBusPhone=findViewById(R.id.etCustHomePhone);
         etCustomerId = findViewById(R.id.etCustomerId);
         etCustFirstName=findViewById(R.id.etCustFirstName);
     }

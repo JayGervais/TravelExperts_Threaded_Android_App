@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".booking.BookingDetailActivity"/>
+        <activity android:name=".booking.BookingDetailActivity"></activity>
         <activity android:name=".booking.BookingListActivity" />
         <activity android:name=".agent.AgentListActivity" />
         <activity android:name=".agent.AgentEditActivity" />
