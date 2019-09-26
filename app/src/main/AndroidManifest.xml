@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".customer.CustomerDetailActivity"></activity>
-        <activity android:name=".customer.CustomerListActivity" />
+        <activity android:name=".booking.BookingDetailActivity"/>
         <activity android:name=".booking.BookingListActivity" />
         <activity android:name=".agent.AgentListActivity" />
+        <activity android:name=".agent.AgentEditActivity" />
         <activity android:name=".agent.AddAgentActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

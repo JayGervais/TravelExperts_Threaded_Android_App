@@ -1,36 +1,22 @@
-package com.example.day10_assignment_v1.customer;
+package com.example.day10_assignment_v1.Customer;
 
-public class Customer {
-    private Integer CustId;
-    private String CustFirstName;
-    private String CustLastName;
-    private String CustAddress;
-    private String CustCity;
-    private String CustProv;
-    private String CustPostal;
-    private String CustCountry;
-    private String CustHomePhone;
-    private String CustBusPhone;
-    private String CustEmail;
-    private Integer AgentId;
+public class Customer
+{
+    Integer CustId;
+    String CustFirstName;
+    String CustLastName;
+    String CustAddress;
+    String CustCity;
+    String CustProv;
+    String CustPostal;
+    String CustCountry;
+    String CustBusPhone;
+    String CustHomePhone;
+    String CustEmail;
+    String AgentId;
 
-    public Customer(Integer custId, String custFirstName, String custLastName, String custAddress, String custCity, String custProv, String custPostal, String custCountry, String custHomePhone, String custBusPhone, String custEmail, Integer agentId)
-    {
-        CustId = custId;
-        CustFirstName = custFirstName;
-        CustLastName = custLastName;
-        CustAddress = custAddress;
-        CustCity = custCity;
-        CustProv = custProv;
-        CustPostal = custPostal;
-        CustCountry = custCountry;
-        CustHomePhone = custHomePhone;
-        CustBusPhone = custBusPhone;
-        CustEmail = custEmail;
-        AgentId = agentId;
-    }
-
-    public Customer(Integer custId, String custFirstName, String custLastName, String custHomePhone, String custEmail)
+    public Customer(Integer custId, String custFirstName, String custLastName,
+                    String custHomePhone, String custEmail)
     {
         CustId = custId;
         CustFirstName = custFirstName;
@@ -42,9 +28,7 @@ public class Customer {
     @Override
     public String toString()
     {
-        return CustId + " " + CustFirstName + " " + CustLastName+ " " + CustAddress + " " + CustCity
-                + " " + CustProv + " " + CustPostal + " " + CustCountry + " " + CustHomePhone
-                + " " + CustBusPhone + " " + CustEmail + " " + AgentId;
+        return CustFirstName + " " + CustLastName;
     }
 
     public Integer getCustId()
@@ -87,14 +71,14 @@ public class Customer {
         return CustCountry;
     }
 
-    public String getCustHomePhone()
-    {
-        return CustHomePhone;
-    }
-
     public String getCustBusPhone()
     {
         return CustBusPhone;
+    }
+
+    public String getCustHomePhone()
+    {
+        return CustHomePhone;
     }
 
     public String getCustEmail()
@@ -102,7 +86,7 @@ public class Customer {
         return CustEmail;
     }
 
-    public Integer getAgentId()
+    public String getAgentId()
     {
         return AgentId;
     }
@@ -147,14 +131,14 @@ public class Customer {
         CustCountry = custCountry;
     }
 
-    public void setCustHomePhone(String custHomePhone)
-    {
-        CustHomePhone = custHomePhone;
-    }
-
     public void setCustBusPhone(String custBusPhone)
     {
         CustBusPhone = custBusPhone;
+    }
+
+    public void setCustHomePhone(String custHomePhone)
+    {
+        CustHomePhone = custHomePhone;
     }
 
     public void setCustEmail(String custEmail)
@@ -162,7 +146,7 @@ public class Customer {
         CustEmail = custEmail;
     }
 
-    public void setAgentId(Integer agentId)
+    public void setAgentId(String agentId)
     {
         AgentId = agentId;
     }
