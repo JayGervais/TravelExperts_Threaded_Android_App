@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".customer.CustomerDetailActivity"></activity>
-        <activity android:name=".booking.CustomerListActivity" />
+        <activity android:name=".customer.CustomerListActivity" />
         <activity android:name=".booking.BookingListActivity" />
         <activity android:name=".agent.AgentListActivity" />
         <activity android:name=".agent.AddAgentActivity">
