@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Travel Experts</string>
     <string name="agent_title">Agents</string>
+    <string name="customer_title">Customers</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
