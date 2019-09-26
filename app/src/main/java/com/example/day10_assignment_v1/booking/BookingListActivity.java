@@ -61,9 +61,9 @@ public class BookingListActivity extends AppCompatActivity
             case R.id.menu_agents:
                 startActivity(new Intent(this, AgentListActivity.class));
                 return true;
-            case R.id.menu_bookings:
-                startActivity(new Intent(this, BookingListActivity.class));
-                return true;
+//            case R.id.menu_bookings:
+//                startActivity(new Intent(this, BookingListActivity.class));
+//                return true;
         }
         return super.onOptionsItemSelected(item);
     }
