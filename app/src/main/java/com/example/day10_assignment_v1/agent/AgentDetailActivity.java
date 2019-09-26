@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.agency.Agency;
 
@@ -81,7 +82,7 @@ public class AgentDetailActivity extends AppCompatActivity
 
         // set text for agency
         Uri.Builder builder = new Uri.Builder();
-        builder.scheme("https").authority("infastory.com")
+        builder.scheme("https").authority(DBHelper.apiAuth())
                 .appendPath("api")
                 .appendPath("agent_spinner_select.php")
                 .appendQueryParameter("AgencyId", String.valueOf(agent.getAgencyId()));
@@ -144,7 +145,7 @@ public class AgentDetailActivity extends AppCompatActivity
                         etAgtPosition.getText().toString(),
                         String.valueOf(agentSelect.getAgencyId()),
                         "api_updateAgent_activitySecret",
-                        "https://infastory.com/api/agent_update.php",
+                        DBHelper.apiURL() + "/api/agent_update.php",
                         AgentDetailActivity.this);
                 Toast.makeText(AgentDetailActivity.this, "Changes Saved", Toast.LENGTH_LONG).show();
                 Intent savedIntent = new Intent(AgentDetailActivity.this, AgentListActivity.class);
@@ -166,7 +167,7 @@ public class AgentDetailActivity extends AppCompatActivity
                             {
                                 AgentDB.DeleteAgent(etAgentId.getText().toString(),
                                         "api_secretKey_deleteAgent",
-                                        "https://infastory.com/api/agent_delete.php",
+                                        DBHelper.apiURL() + "/api/agent_delete.php",
                                         AgentDetailActivity.this);
                                 Toast.makeText(AgentDetailActivity.this, "Agent Deleted Successfully", Toast.LENGTH_LONG).show();
                                 Intent savedIntent = new Intent(AgentDetailActivity.this, AgentListActivity.class);
@@ -186,7 +187,7 @@ public class AgentDetailActivity extends AppCompatActivity
             }
         });
 
-        AgentDB.GetAgencyData("https://infastory.com/api/agency_dropdown.php", this, spinAgencies);
+        AgentDB.GetAgencyData(DBHelper.apiURL() + "/api/agency_dropdown.php", this, spinAgencies);
     }
 
     public void textFieldEnabled(boolean enabled)
