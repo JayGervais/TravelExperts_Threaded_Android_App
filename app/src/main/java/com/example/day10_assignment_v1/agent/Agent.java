@@ -32,10 +32,11 @@ public class Agent implements Serializable
         AgencyId = agencyId;
     }
 
-    public Agent(String agtFirstName, String agtLastName)
+    public Agent(String agtFirstName, String agtLastName, String agtPosition)
     {
         AgtFirstName = agtFirstName;
         AgtLastName = agtLastName;
+        AgtPosition = agtPosition;
     }
 
     public Integer getAgentId()
@@ -83,7 +84,6 @@ public class Agent implements Serializable
     {
         AgtMiddleInitial = agtMiddleInitial;
     }
-
     public void setAgtLastName(String agtLastName)
     {
         AgtLastName = agtLastName;
@@ -108,7 +108,7 @@ public class Agent implements Serializable
     @Override
     public String toString()
     {
-        return AgtFirstName + " " + AgtLastName;
+        return AgtFirstName + " " + AgtLastName + ", " + AgtPosition;
     }
 
 }
