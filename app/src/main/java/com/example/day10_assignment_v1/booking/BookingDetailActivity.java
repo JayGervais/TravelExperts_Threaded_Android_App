@@ -1,6 +1,8 @@
 package com.example.day10_assignment_v1.booking;
 
+import android.content.Context;
 import android.net.Uri;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
@@ -10,13 +12,16 @@ import android.view.MenuItem;
 
 import com.example.day10_assignment_v1.Customer.CustomerDB;
 import com.example.day10_assignment_v1.R;
+import com.example.day10_assignment_v1.agent.Agent;
 import com.example.day10_assignment_v1.agent.AgentDB;
 
 public class BookingDetailActivity extends AppCompatActivity
 {
     TextView tvBookingDate, tvBookingNumber, tvTravelerCount, tvDestination,
-            tvBasePrice, tvAgencyCommission, tvDescription, tvStartDate, tvEndDate,
-            tvClassName, tvCustFirstName, tvCustLastName, tvCustEmail, tvCustPhone;
+            tvBasePrice, tvAgencyCommission, tvDescription, tvStartDate, tvEndDate, tvClassName,
+            tvCustFirstName, tvCustLastName, tvCustEmail, tvCustPhone;
+
+    Button btnAgent;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -52,11 +57,14 @@ public class BookingDetailActivity extends AppCompatActivity
         tvEndDate = findViewById(R.id.tvEndDate);
         tvClassName = findViewById(R.id.tvClassName);
 
-        // agent view
+        // customer view
         tvCustFirstName = findViewById(R.id.tvCustFirstName);
         tvCustLastName = findViewById(R.id.tvCustLastName);
         tvCustEmail = findViewById(R.id.tvCustEmail);
         tvCustPhone = findViewById(R.id.tvCustPhone);
+
+        // agent view
+        btnAgent = findViewById(R.id.btnAgent);
 
         // string builder for api call
         Uri.Builder bookingURL = new Uri.Builder();
@@ -79,5 +87,20 @@ public class BookingDetailActivity extends AppCompatActivity
 
         CustomerDB.SelectedCustomerData(customerAPI, this, tvCustFirstName, tvCustLastName,
                 tvCustPhone, tvCustEmail);
+
+        final Agent agent = (Agent) getIntent().getSerializableExtra("agent");
+
+        Uri.Builder agentURL = new Uri.Builder();
+        agentURL.scheme("https").authority("infastory.com")
+                .appendPath("api")
+                .appendPath("agent_data_select.php")
+                .appendQueryParameter("CustomerId", String.valueOf(booking.getCustomerId()));
+        String agentAPI = customerURL.build().toString();
+
+        //AgentDB.ThisAgent(agentAPI, this, String.valueOf(booking.getCustomerId()));
+
+
+
+        btnAgent.setText("Agent");
     }
 }

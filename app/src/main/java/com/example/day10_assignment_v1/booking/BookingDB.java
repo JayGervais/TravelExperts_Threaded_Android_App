@@ -7,6 +7,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import android.widget.TextView;
+
+import com.example.day10_assignment_v1.DBHelper;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -79,21 +82,13 @@ public class BookingDB
             @Override
             protected String doInBackground(Void... voids)
             {
-                try
-                {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null)
-                    {
-                        sb.append(json + "\n");
-                    }
-                    return sb.toString().trim();
-                } catch (Exception e)
+                if (DBHelper.urlInputStream(urlWebService) == null)
                 {
                     return null;
+                }
+                else
+                {
+                    return DBHelper.urlInputStream(urlWebService);
                 }
             }
         }
@@ -198,21 +193,13 @@ public class BookingDB
             @Override
             protected String doInBackground(Void... voids)
             {
-                try
-                {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null)
-                    {
-                        sb.append(json + "\n");
-                    }
-                    return sb.toString().trim();
-                } catch (Exception e)
+                if (DBHelper.urlInputStream(urlWebService) == null)
                 {
                     return null;
+                }
+                else
+                {
+                    return DBHelper.urlInputStream(urlWebService);
                 }
             }
         }
