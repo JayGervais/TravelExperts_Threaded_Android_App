@@ -12,11 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 public class CustomerDB
 {
     public static void SelectedCustomerData(final String urlWebService, final Context cont,
@@ -78,14 +73,7 @@ public class CustomerDB
             @Override
             protected String doInBackground(Void... voids)
             {
-                if (DBHelper.urlInputStream(urlWebService) == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    return DBHelper.urlInputStream(urlWebService);
-                }
+                return DBHelper.urlInputStream(urlWebService);
             }
         }
         DownloadJSON getJSON = new DownloadJSON();

@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.agent.AgentListActivity;
@@ -46,7 +47,7 @@ public class BookingListActivity extends AppCompatActivity
             }
         });
 
-        BookingDB.BookingListData("https://infastory.com/api/booking_data.php",
+        BookingDB.BookingListData(DBHelper.apiURL() + "/api/booking_data.php",
                 this, listBookings);
     }
 

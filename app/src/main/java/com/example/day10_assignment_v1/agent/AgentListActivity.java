@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.booking.BookingListActivity;
@@ -52,7 +53,7 @@ public class AgentListActivity extends AppCompatActivity
             }
         });
 
-        AgentDB.GetAgentListData("https://infastory.com/api/agent_data.php", this, listAgents);
+        AgentDB.GetAgentListData(DBHelper.apiURL() + "/api/agent_data.php", this, listAgents);
     }
 
     @Override

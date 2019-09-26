@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.agency.Agency;
 
@@ -90,7 +91,7 @@ public class AddAgentActivity extends AppCompatActivity
                         String.valueOf(agency.getAgencyId()),
                         //etAgencyId.getText().toString(),
                         "sait_oosd_2019_updateSecret",
-                        "https://infastory.com/api/agent_add.php",
+                        DBHelper.apiURL() + "/api/agent_add.php",
                         AddAgentActivity.this);
                 Toast.makeText(AddAgentActivity.this, "New Agent Added", Toast.LENGTH_LONG).show();
                 Intent savedIntent = new Intent(AddAgentActivity.this, AgentListActivity.class);
@@ -108,7 +109,7 @@ public class AddAgentActivity extends AppCompatActivity
             }
         });
 
-        AgentDB.GetAgencyData("https://infastory.com/api/agency_dropdown.php", this, spinnerAgencies);
+        AgentDB.GetAgencyData(DBHelper.apiURL() + "/api/agency_dropdown.php", this, spinnerAgencies);
     }
 
 

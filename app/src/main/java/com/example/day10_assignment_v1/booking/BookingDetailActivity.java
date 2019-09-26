@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.day10_assignment_v1.Customer.CustomerDB;
+import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.agent.Agent;
 import com.example.day10_assignment_v1.agent.AgentDB;
@@ -68,7 +69,7 @@ public class BookingDetailActivity extends AppCompatActivity
 
         // string builder for api call
         Uri.Builder bookingURL = new Uri.Builder();
-        bookingURL.scheme("https").authority("infastory.com")
+        bookingURL.scheme("https").authority(DBHelper.apiAuth())
                 .appendPath("api")
                 .appendPath("booking_data_select.php")
                 .appendQueryParameter("BookingId", String.valueOf(booking.getBookingId()));
@@ -79,7 +80,7 @@ public class BookingDetailActivity extends AppCompatActivity
                 tvClassName);
 
         Uri.Builder customerURL = new Uri.Builder();
-        customerURL.scheme("https").authority("infastory.com")
+        customerURL.scheme("https").authority(DBHelper.apiAuth())
                 .appendPath("api")
                 .appendPath("customer_data_select.php")
                 .appendQueryParameter("CustomerId", String.valueOf(booking.getCustomerId()));
@@ -91,7 +92,7 @@ public class BookingDetailActivity extends AppCompatActivity
         final Agent agent = (Agent) getIntent().getSerializableExtra("agent");
 
         Uri.Builder agentURL = new Uri.Builder();
-        agentURL.scheme("https").authority("infastory.com")
+        agentURL.scheme("https").authority(DBHelper.apiAuth())
                 .appendPath("api")
                 .appendPath("agent_data_select.php")
                 .appendQueryParameter("CustomerId", String.valueOf(booking.getCustomerId()));

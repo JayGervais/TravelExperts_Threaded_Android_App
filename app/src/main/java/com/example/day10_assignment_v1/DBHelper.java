@@ -7,6 +7,19 @@ import java.net.URL;
 
 public class DBHelper
 {
+    // global strings for API
+    public static String apiURL()
+    {
+        String url = "infastory.com";
+        return "https://" + url;
+    }
+
+    public static String apiAuth()
+    {
+        String url = "infastory.com";
+        return url;
+    }
+
     // input stream used in multiple queries
     public static String urlInputStream(String urlWebService)
     {
