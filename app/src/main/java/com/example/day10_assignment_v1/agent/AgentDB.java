@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.day10_assignment_v1.agency.Agency;
+import com.example.day10_assignment_v1.booking.Booking;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,9 +24,14 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class AgentDB
@@ -282,6 +289,95 @@ public class AgentDB
                 }
             }
 
+            @Override
+            protected String doInBackground(Void... voids)
+            {
+                try
+                {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null)
+                    {
+                        sb.append(json + "\n");
+                    }
+                    return sb.toString().trim();
+                } catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
+    }
+
+    // class designed for agent text view
+    public static void SelectedAgentData(final String urlWebService, final Context cont,
+                                   final TextView tvAgtFirstName, final TextView tvAgtLastName,
+                                   final TextView tvAgtBusPhone, final  TextView tvAgtEmail,
+                                   final  TextView tvAgtPosition)
+    {
+        class DownloadJSON extends AsyncTask<Void, Void, String>
+        {
+            @Override
+            protected void onPreExecute()
+            {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s)
+            {
+                super.onPostExecute(s);
+                try
+                {
+                    JSONArray jsonArray = new JSONArray(s);
+                    String[] agents = new String[jsonArray.length()];
+                    String[] aFName = new String[jsonArray.length()];
+                    String[] aLName = new String[jsonArray.length()];
+                    String[] aBusPhone = new String[jsonArray.length()];
+                    String[] aEmail = new String[jsonArray.length()];
+                    String[] aPos = new String[jsonArray.length()];
+
+                    ArrayAdapter<Agent> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
+                    for (int i = 0; i < jsonArray.length(); i++)
+                    {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+
+                        arrayAdapter.add(new Agent(Integer.parseInt(obj.getString("AgentId")),
+                                obj.getString("AgtFirstName"),
+                                obj.getString("AgtMiddleInitial"),
+                                obj.getString("AgtLastName"),
+                                obj.getString("AgtBusPhone"),
+                                obj.getString("AgtEmail"),
+                                obj.getString("AgtPosition"),
+                                Integer.parseInt(obj.getString("AgencyId"))));
+
+                        agents[i] = obj.getString("AgtFirstName") + " " + obj.getString("AgtLastName");
+
+                        // set variables
+                        aFName[i] = obj.getString("AgtFirstName");
+                        aLName[i] = obj.getString("AgtLastName");
+                        aBusPhone[i] = obj.getString("AgtBusPhone");
+                        aEmail[i] = obj.getString("AgtEmail");
+                        aPos[i] = obj.getString("AgtPosition");
+                    }
+
+                    // set text fields
+                    tvAgtFirstName.setText(aFName[0]);
+                    tvAgtLastName.setText(aLName[0]);
+                    tvAgtBusPhone.setText(aBusPhone[0]);
+                    tvAgtEmail.setText(aEmail[0]);
+                    tvAgtPosition.setText(aPos[0]);
+
+                } catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+            }
             @Override
             protected String doInBackground(Void... voids)
             {

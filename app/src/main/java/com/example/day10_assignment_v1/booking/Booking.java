@@ -12,7 +12,7 @@ public class Booking implements Serializable
     private Integer BookingId;
     private Date BookingDate;
     private String BookingNo;
-    private String CustomerId;
+    private Integer CustomerId;
     private Integer TravelerCount;
     private String Description;
     private String TravelType;
@@ -22,6 +22,9 @@ public class Booking implements Serializable
     private String Destination;
     private BigDecimal BasePrice;
     private BigDecimal AgencyCommission;
+    private Date StartDate;
+    private Date EndDate;
+    private String ClassName;
 
     public Booking(Integer bookingId,
                    String bookingNo,
@@ -29,9 +32,12 @@ public class Booking implements Serializable
                    Integer travelerCount,
                    String description,
                    BigDecimal basePrice,
-                   BigDecimal agencyCommission)
+                   BigDecimal agencyCommission,
+                   Date startDate,
+                   Date endDate,
+                   String className,
+                   Integer customerId)
     {
-
         BookingId = bookingId;
         BookingNo = bookingNo;
         BookingDate = bookingDate;
@@ -39,6 +45,10 @@ public class Booking implements Serializable
         Description = description;
         BasePrice = basePrice;
         AgencyCommission = agencyCommission;
+        StartDate = startDate;
+        EndDate = endDate;
+        ClassName = className;
+        CustomerId = customerId;
     }
 
     public Booking(Integer bookingId, Date bookingDate)
@@ -74,7 +84,7 @@ public class Booking implements Serializable
     {
         return BookingNo;
     }
-    public String getCustomerId()
+    public Integer getCustomerId()
     {
         return CustomerId;
     }
@@ -114,6 +124,18 @@ public class Booking implements Serializable
     {
         return AgencyCommission;
     }
+    public Date getStartDate()
+    {
+        return StartDate;
+    }
+    public Date getEndDate()
+    {
+        return EndDate;
+    }
+    public String getClassName()
+    {
+        return ClassName;
+    }
 
     public void setBookingId(Integer bookingId)
     {
@@ -127,7 +149,7 @@ public class Booking implements Serializable
     {
         BookingNo = bookingNo;
     }
-    public void setCustomerId(String customerId)
+    public void setCustomerId(Integer customerId)
     {
         CustomerId = customerId;
     }
@@ -166,5 +188,21 @@ public class Booking implements Serializable
     public void setAgencyCommission(BigDecimal agencyCommission)
     {
         AgencyCommission = agencyCommission;
+    }
+    public void setStartDate(Date startDate)
+    {
+        StartDate = startDate;
+    }
+    public void setEndDate(Date endDate)
+    {
+        EndDate = endDate;
+    }
+    public void setDescription(String description)
+    {
+        Description = description;
+    }
+    public void setClassName(String className)
+    {
+        ClassName = className;
     }
 }

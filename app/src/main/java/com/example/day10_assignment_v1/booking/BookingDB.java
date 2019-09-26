@@ -56,7 +56,12 @@ public class BookingDB
                                 Integer.parseInt(obj.getString("TravelerCount")),
                                 obj.getString("Description"),
                                 BigDecimal.valueOf(obj.getDouble("BasePrice")),
-                                BigDecimal.valueOf(obj.getDouble("AgencyCommission"))));
+                                BigDecimal.valueOf(obj.getDouble("AgencyCommission")),
+                                formatter.parse(obj.getString("TripStart")),
+                                formatter.parse(obj.getString("TripEnd")),
+                                obj.getString("ClassName"),
+                                obj.getInt("CustomerId")
+                                ));
 
                         bookings[i] = obj.getInt("BookingId") + obj.getString("BookingDate");
                     }
@@ -99,7 +104,9 @@ public class BookingDB
     public static void BookingData(final String urlWebService, final Context cont,
                                    final TextView tvBookingDate, final TextView tvBookingNo,
                                    final TextView tvTravelerCount, final  TextView tvDestination,
-                                   final  TextView tvBasePrice, final  TextView tvAgencyCommission)
+                                   final  TextView tvBasePrice, final  TextView tvAgencyCommission,
+                                   final TextView tvDescription, final TextView tvStartDate,
+                                   final TextView tvEndDate, final TextView tvClassName)
     {
         class DownloadJSON extends AsyncTask<Void, Void, String>
         {
@@ -123,6 +130,10 @@ public class BookingDB
                     String[] bDest = new String[jsonArray.length()];
                     String[] bBPrice = new String[jsonArray.length()];
                     String[] bComm = new String[jsonArray.length()];
+                    String[] bDesc = new String[jsonArray.length()];
+                    String[] bSDate = new String[jsonArray.length()];
+                    String[] bEDate = new String[jsonArray.length()];
+                    String[] bClass = new String[jsonArray.length()];
 
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                     ArrayAdapter<Booking> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
@@ -136,18 +147,25 @@ public class BookingDB
                                 Integer.parseInt(obj.getString("TravelerCount")),
                                 obj.getString("Description"),
                                 BigDecimal.valueOf(obj.getDouble("BasePrice")),
-                                BigDecimal.valueOf(obj.getDouble("AgencyCommission"))));
+                                BigDecimal.valueOf(obj.getDouble("AgencyCommission")),
+                                formatter.parse(obj.getString("TripStart")),
+                                formatter.parse(obj.getString("TripEnd")),
+                                obj.getString("ClassName"),
+                                obj.getInt("CustomerId")
+                                ));
 
                         // set variables
                         bookings[i] = obj.getInt("BookingId") + obj.getString("BookingDate");
-
-                        // date format
-                        String bDateFormat = String.valueOf(formatter.parse(obj.getString("BookingDate")));
-                        bDate[i] = bDateFormat;
+                        // dates
+                        bDate[i] = obj.getString("BookingDate").substring(0, 10);
+                        bSDate[i] = obj.getString("TripStart").substring(0, 10);
+                        bEDate[i] = obj.getString("TripEnd").substring(0, 10);
 
                         bNo[i] = obj.getString("BookingNo");
                         bTravelers[i] = obj.getString("TravelerCount");
                         bDest[i] = obj.getString("Destination");
+                        bDesc[i] = obj.getString("Description");
+                        bClass[i] = obj.getString("ClassName");
 
                         // currency formatting
                         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
@@ -164,6 +182,10 @@ public class BookingDB
                     tvDestination.setText(bDest[0]);
                     tvBasePrice.setText(bBPrice[0]);
                     tvAgencyCommission.setText(bComm[0]);
+                    tvDescription.setText(bDesc[0]);
+                    tvStartDate.setText(bSDate[0]);
+                    tvEndDate.setText(bEDate[0]);
+                    tvClassName.setText(bClass[0]);
 
                 } catch (JSONException e)
                 {

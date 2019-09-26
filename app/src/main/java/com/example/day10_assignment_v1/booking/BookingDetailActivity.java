@@ -8,11 +8,15 @@ import androidx.core.app.NavUtils;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.day10_assignment_v1.Customer.CustomerDB;
 import com.example.day10_assignment_v1.R;
+import com.example.day10_assignment_v1.agent.AgentDB;
 
 public class BookingDetailActivity extends AppCompatActivity
 {
-    TextView tvBookingDate, tvBookingNumber, tvTravelerCount, tvDestination, tvBasePrice, tvAgencyCommission;
+    TextView tvBookingDate, tvBookingNumber, tvTravelerCount, tvDestination,
+            tvBasePrice, tvAgencyCommission, tvDescription, tvStartDate, tvEndDate,
+            tvClassName, tvCustFirstName, tvCustLastName, tvCustEmail, tvCustPhone;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -43,6 +47,16 @@ public class BookingDetailActivity extends AppCompatActivity
         tvDestination = findViewById(R.id.tvDestination);
         tvBasePrice = findViewById(R.id.tvBasePrice);
         tvAgencyCommission = findViewById(R.id.tvAgencyCommission);
+        tvDescription = findViewById(R.id.tvDescription);
+        tvStartDate = findViewById(R.id.tvStartDate);
+        tvEndDate = findViewById(R.id.tvEndDate);
+        tvClassName = findViewById(R.id.tvClassName);
+
+        // agent view
+        tvCustFirstName = findViewById(R.id.tvCustFirstName);
+        tvCustLastName = findViewById(R.id.tvCustLastName);
+        tvCustEmail = findViewById(R.id.tvCustEmail);
+        tvCustPhone = findViewById(R.id.tvCustPhone);
 
         // string builder for api call
         Uri.Builder bookingURL = new Uri.Builder();
@@ -53,7 +67,17 @@ public class BookingDetailActivity extends AppCompatActivity
         String bookingAPI = bookingURL.build().toString();
 
         BookingDB.BookingData(bookingAPI, this, tvBookingDate, tvBookingNumber, tvTravelerCount,
-                tvDestination, tvBasePrice, tvAgencyCommission);
+                tvDestination, tvBasePrice, tvAgencyCommission, tvDescription, tvStartDate, tvEndDate,
+                tvClassName);
 
+        Uri.Builder customerURL = new Uri.Builder();
+        customerURL.scheme("https").authority("infastory.com")
+                .appendPath("api")
+                .appendPath("customer_data_select.php")
+                .appendQueryParameter("CustomerId", String.valueOf(booking.getCustomerId()));
+        String customerAPI = customerURL.build().toString();
+
+        CustomerDB.SelectedCustomerData(customerAPI, this, tvCustFirstName, tvCustLastName,
+                tvCustPhone, tvCustEmail);
     }
 }
