@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.agency.Agency;
 
@@ -55,7 +54,7 @@ public class AddAgentActivity extends AppCompatActivity
 
         // buttons
         btnSave = findViewById(R.id.btnSave);
-        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel = findViewById(R.id.btnCancelCust);
 
         spinnerAgencies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {

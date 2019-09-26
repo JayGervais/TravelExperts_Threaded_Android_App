@@ -181,7 +181,7 @@
                     android:ems="10"
                     android:inputType="textPersonName" />
                 <Button
-                    android:id="@+id/btnSaveCustomer"
+                    android:id="@+id/btnSave"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="16dp"

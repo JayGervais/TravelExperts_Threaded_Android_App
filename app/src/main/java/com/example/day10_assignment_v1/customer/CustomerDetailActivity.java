@@ -3,6 +3,7 @@ package com.example.day10_assignment_v1.customer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.day10_assignment_v1.R;
@@ -11,7 +12,8 @@ public class CustomerDetailActivity extends AppCompatActivity {
 
     EditText etCustomerId, etCustFirstName, etCustLastName, etCustAddress,
             etCustCity, etCustProv, etCustPostal, etCustCountry, etCustHomePhone,
-            etCustBusPhone, etCustEmail;
+            etCustBusPhone, etCustEmail,etAgency;
+    Button btnSaveCustomer, btnCancel;
 
 
     @Override
@@ -28,8 +30,12 @@ public class CustomerDetailActivity extends AppCompatActivity {
         etCustPostal = findViewById(R.id.etCustPostal);
         etCustCountry=findViewById(R.id.etCustCountry);
         etCustHomePhone = findViewById(R.id.etCustHomePhone);
-        etCustBusPhone=findViewById(R.id.);
-        etCustomerId = findViewById(R.id.etCustomerId);
+        etCustBusPhone=findViewById(R.id.etBusPhone);
+        etCustEmail=findViewById(R.id.etCustEmail);
         etCustFirstName=findViewById(R.id.etCustFirstName);
+        etAgency=findViewById(R.id.etAgency);
+        btnSaveCustomer=findViewById(R.id.btnNewCustomer);
+        btnCancel=findViewById(R.id.btnCancelCust);
     }
+
 }

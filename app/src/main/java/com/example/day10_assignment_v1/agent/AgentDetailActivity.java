@@ -1,6 +1,5 @@
 package com.example.day10_assignment_v1.agent;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
@@ -17,13 +16,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.day10_assignment_v1.MainActivity;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.agency.Agency;
-
-import org.apache.http.client.methods.HttpGet;
-
-import java.util.HashMap;
 
 public class AgentDetailActivity extends AppCompatActivity
 {
@@ -67,7 +61,7 @@ public class AgentDetailActivity extends AppCompatActivity
         btnSave = findViewById(R.id.btnSave);
         btnEdit = findViewById(R.id.btnEdit);
         btnDelete = findViewById(R.id.btnDelete);
-        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel = findViewById(R.id.btnCancelCust);
 
         final Agent agent = (Agent) getIntent().getSerializableExtra("agent");
 
