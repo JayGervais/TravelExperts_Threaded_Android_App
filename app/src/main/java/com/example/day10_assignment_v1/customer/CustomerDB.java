@@ -1,16 +1,18 @@
-package com.example.day10_assignment_v1.Customer;
+package com.example.day10_assignment_v1.customer;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.day10_assignment_v1.DBHelper;
-import com.example.day10_assignment_v1.agent.Agent;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class CustomerDB
 {
@@ -73,7 +75,22 @@ public class CustomerDB
             @Override
             protected String doInBackground(Void... voids)
             {
-                return DBHelper.urlInputStream(urlWebService);
+                try
+                {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null)
+                    {
+                        sb.append(json + "\n");
+                    }
+                    return sb.toString().trim();
+                } catch (Exception e)
+                {
+                    return null;
+                }
             }
         }
         DownloadJSON getJSON = new DownloadJSON();
