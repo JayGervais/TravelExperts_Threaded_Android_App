@@ -23,4 +23,11 @@
         android:title="Bookings"
         android:visible="true"
         app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/menu_customers"
+        android:enabled="true"
+        android:icon="@drawable/customer_icon"
+        android:title="Customers"
+        android:visible="true"
+        app:showAsAction="always|withText" />
 </menu>
