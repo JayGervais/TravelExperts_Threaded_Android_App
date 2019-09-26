@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.agency.Agency;
+import com.example.day10_assignment_v1.agency.AgencyDB;
 
 public class AgentDetailActivity extends AppCompatActivity
 {
@@ -187,7 +188,7 @@ public class AgentDetailActivity extends AppCompatActivity
             }
         });
 
-        AgentDB.GetAgencyData(DBHelper.apiURL() + "/api/agency_dropdown.php", this, spinAgencies);
+        AgencyDB.GetAgencyDataDropdown(DBHelper.apiURL() + "/api/agency_dropdown.php", this, spinAgencies);
     }
 
     public void textFieldEnabled(boolean enabled)
