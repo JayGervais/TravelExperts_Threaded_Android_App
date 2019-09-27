@@ -113,7 +113,6 @@ public class Agent implements Parcelable
         return AgtFirstName + " " + AgtLastName + ", " + AgtPosition;
     }
 
-
 //    @Override
 //    public String toString()
 //    {

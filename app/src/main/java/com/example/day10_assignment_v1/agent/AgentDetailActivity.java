@@ -96,9 +96,8 @@ public class AgentDetailActivity extends AppCompatActivity
                 .appendQueryParameter("AgencyId", String.valueOf(agentObj.getAgencyId()));
         String myUrl = builder.build().toString();
 
-//        AgentDB.GetAgentAgencyText(myUrl,
-//                AgentDetailActivity.this, tvAgency);
-
+        AgentDB.GetAgentAgencyText(myUrl,
+                AgentDetailActivity.this, tvAgency);
 
         buttonEdit.setOnClickListener(new View.OnClickListener()
         {
@@ -106,14 +105,14 @@ public class AgentDetailActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 Intent intent = new Intent(AgentDetailActivity.this, AgentEditActivity.class);
-                intent.putExtra("agentId", agentId);
+                intent.putExtra("agentId", String.valueOf(agentId));
                 intent.putExtra("agtFirstName", agtFirsName);
                 intent.putExtra("agtMiddleInitial", agtMiddleInitial);
                 intent.putExtra("agtLastName", agtLastName);
                 intent.putExtra("agtBusPhone", agtBusPhone);
                 intent.putExtra("agtEmail", agtEmail);
                 intent.putExtra("agtPos", agtPos);
-                intent.putExtra("agencyId", agencyId);
+                intent.putExtra("agencyId", String.valueOf(agencyId));
                 startActivity(intent);
             }
         });

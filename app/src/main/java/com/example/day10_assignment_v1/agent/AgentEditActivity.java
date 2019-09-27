@@ -30,7 +30,7 @@ public class AgentEditActivity  extends AppCompatActivity
     EditText etAgentId, etAgtFirstName, etAgtMiddleInitial, etAgtLastName,
             etAgtBusPhone, etAgtEmail, etAgtPosition, etAgency;
     Spinner spinAgencies;
-    Button btnSave, btnEdit, btnDelete, btnCancel;
+    Button btnSave, btnDelete, btnCancel;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -48,7 +48,7 @@ public class AgentEditActivity  extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agent_detail);
+        setContentView(R.layout.activity_agent_edit);
 
         // back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,7 +65,6 @@ public class AgentEditActivity  extends AppCompatActivity
 
         // buttons
         btnSave = findViewById(R.id.btnSave);
-        btnEdit = findViewById(R.id.btnEdit);
         btnDelete = findViewById(R.id.btnDelete);
         btnCancel = findViewById(R.id.btnCancel);
 
@@ -79,18 +78,8 @@ public class AgentEditActivity  extends AppCompatActivity
         String agtPos = intent.getStringExtra("agtPos");
         String agencyId = intent.getStringExtra("agencyId");
 
-        // set text for agency
-//        Uri.Builder agentBuilder = new Uri.Builder();
-//        agentBuilder.scheme("https").authority(DBHelper.apiAuth())
-//                .appendPath("api")
-//                .appendPath("agent_data_select.php")
-//                .appendQueryParameter("AgentId", String.valueOf(agentObj.getAgencyId()));
-//        String agentUrl = agentBuilder.build().toString();
-//
-//        AgentDB.SelectedAgentData(agentUrl, this, etAgtFirstName, etAgtMiddleInitial,
-//                etAgtLastName, etAgtBusPhone, etAgtEmail, etAgtPosition);
-
-        // etAgentId.setText(String.valueOf(agent.getAgentId()));
+        // agency fields
+        etAgentId.setText(String.valueOf(agentId));
         etAgtFirstName.setText(agtFirstName);
         if (!agtMiddleInitial.equals("null"))
         {
@@ -102,7 +91,7 @@ public class AgentEditActivity  extends AppCompatActivity
         etAgtPosition.setText(agtPos);
 
         // set spinner data
-        //spinAgencies.setVisibility(View.INVISIBLE);
+        spinAgencies.setVisibility(View.INVISIBLE);
 
         // set text for agency
         Uri.Builder builder = new Uri.Builder();
@@ -112,8 +101,8 @@ public class AgentEditActivity  extends AppCompatActivity
                 .appendQueryParameter("AgencyId", String.valueOf(agencyId));
         String myUrl = builder.build().toString();
 
-//        AgentDB.GetAgentListString(myUrl,
-//                AgentEditActivity.this, etAgency);
+        AgentDB.GetAgentListString(myUrl,
+                AgentEditActivity.this, etAgency);
 
 //        textFieldEnabled(false);
 //        btnSave.setEnabled(false);
@@ -121,36 +110,20 @@ public class AgentEditActivity  extends AppCompatActivity
 //        btnCancel.setEnabled(false);
 //        etAgency.setEnabled(false);
 
-//        spinAgencies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-//        {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-//            {
-//                Agency agentSelect = (Agency) spinAgencies.getSelectedItem();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent)
-//            {
-//
-//            }
-//        });
+        spinAgencies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                Agency agentSelect = (Agency) spinAgencies.getSelectedItem();
+            }
 
-//        btnEdit.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                textFieldEnabled(true);
-//                btnSave.setEnabled(true);
-//                btnCancel.setEnabled(true);
-//                btnEdit.setEnabled(false);
-//                btnDelete.setEnabled(true);
-//                //spinAgencies.setVisibility(View.VISIBLE);
-//                //spinAgencies.setSelection(agent.getAgencyId()-1);
-//                etAgency.setVisibility(View.INVISIBLE);
-//            }
-//        });
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
 
         // save button click listener
         btnSave.setOnClickListener(new View.OnClickListener()
@@ -172,7 +145,7 @@ public class AgentEditActivity  extends AppCompatActivity
                         DBHelper.apiURL() + "/api/agent_update.php",
                         AgentEditActivity.this);
                 Toast.makeText(AgentEditActivity.this, "Changes Saved", Toast.LENGTH_LONG).show();
-                Intent savedIntent = new Intent(AgentEditActivity.this, AgentListActivity.class);
+                Intent savedIntent = new Intent(AgentEditActivity.this, AgentDetailActivity.class);
                 AgentEditActivity.this.startActivity(savedIntent);
             }
         });
@@ -211,17 +184,7 @@ public class AgentEditActivity  extends AppCompatActivity
             }
         });
 
-        //AgencyDB.GetAgencyDataDropdown(DBHelper.apiURL() + "/api/agency_dropdown.php", this, spinAgencies);
+        AgencyDB.GetAgencyDataDropdown(DBHelper.apiURL() + "/api/agency_dropdown.php", this, spinAgencies);
     }
 
-    public void textFieldEnabled(boolean enabled)
-    {
-        etAgtFirstName.setEnabled(enabled);
-//        etAgtMiddleInitial.setEnabled(enabled);
-//        etAgtLastName.setEnabled(enabled);
-//        etAgtBusPhone.setEnabled(enabled);
-//        etAgtEmail.setEnabled(enabled);
-//        etAgtPosition.setEnabled(enabled);
-//        spinAgencies.setEnabled(enabled);
-    }
 }
