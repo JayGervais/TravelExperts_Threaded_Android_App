@@ -1,143 +1,169 @@
-package com.example.day10_assignment_v1.customer;
+package com.example.day10_assignment_v1.Customer;
 
 public class Customer {
-    private int customerId;
-    private String custFirstName;
-    private String custLastName;
-    private String custAddress;
-    private String custCity;
-    private String custProv;
-    private String custPostal;
-    private String custCountry;
-    private String custHomePhone;
-    private String custBusPhone;
-    private String custEmail;
-    private int agentId;
+    private Integer CustId;
+    private String CustFirstName;
+    private String CustLastName;
+    private String CustAddress;
+    private String CustCity;
+    private String CustProv;
+    private String CustPostal;
+    private String CustCountry;
+    private String CustHomePhone;
+    private String CustBusPhone;
+    private String CustEmail;
+    private Integer AgentId;
 
-    public Customer(int customerId, String custFirstName, String custLastName, String custAddress, String custCity, String custProv, String custPostal, String custCountry, String custHomePhone, String custBusPhone, String custEmail, int agentId) {
-        this.customerId = customerId;
-        this.custFirstName = custFirstName;
-        this.custLastName = custLastName;
-        this.custAddress = custAddress;
-        this.custCity = custCity;
-        this.custProv = custProv;
-        this.custPostal = custPostal;
-        this.custCountry = custCountry;
-        this.custHomePhone = custHomePhone;
-        this.custBusPhone = custBusPhone;
-        this.custEmail = custEmail;
-        this.agentId = agentId;
+    public Customer(Integer custId, String custFirstName, String custLastName, String custAddress, String custCity, String custProv, String custPostal, String custCountry, String custHomePhone, String custBusPhone, String custEmail, Integer agentId)
+    {
+        CustId = custId;
+        CustFirstName = custFirstName;
+        CustLastName = custLastName;
+        CustAddress = custAddress;
+        CustCity = custCity;
+        CustProv = custProv;
+        CustPostal = custPostal;
+        CustCountry = custCountry;
+        CustHomePhone = custHomePhone;
+        CustBusPhone = custBusPhone;
+        CustEmail = custEmail;
+        AgentId = agentId;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getCustFirstName() {
-        return custFirstName;
-    }
-
-    public void setCustFirstName(String custFirstName) {
-        this.custFirstName = custFirstName;
-    }
-
-    public String getCustLastName() {
-        return custLastName;
-    }
-
-    public void setCustLastName(String custLastName) {
-        this.custLastName = custLastName;
-    }
-
-    public String getCustAddress() {
-        return custAddress;
-    }
-
-    public void setCustAddress(String custAddress) {
-        this.custAddress = custAddress;
-    }
-
-    public String getCustCity() {
-        return custCity;
-    }
-
-    public void setCustCity(String custCity) {
-        this.custCity = custCity;
-    }
-
-    public String getCustProv() {
-        return custProv;
-    }
-
-    public void setCustProv(String custProv) {
-        this.custProv = custProv;
-    }
-
-    public String getCustPostal() {
-        return custPostal;
-    }
-
-    public void setCustPostal(String custPostal) {
-        this.custPostal = custPostal;
-    }
-
-    public String getCustCountry() {
-        return custCountry;
-    }
-
-    public void setCustCountry(String custCountry) {
-        this.custCountry = custCountry;
-    }
-
-    public String getCustHomePhone() {
-        return custHomePhone;
-    }
-
-    public void setCustHomePhone(String custHomePhone) {
-        this.custHomePhone = custHomePhone;
-    }
-
-    public String getCustBusPhone() {
-        return custBusPhone;
-    }
-
-    public void setCustBusPhone(String custBusPhone) {
-        this.custBusPhone = custBusPhone;
-    }
-
-    public String getCustEmail() {
-        return custEmail;
-    }
-
-    public void setCustEmail(String custEmail) {
-        this.custEmail = custEmail;
-    }
-
-    public int getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(int agentId) {
-        this.agentId = agentId;
+    public Customer(Integer custId, String custFirstName, String custLastName, String custHomePhone, String custEmail)
+    {
+        CustId = custId;
+        CustFirstName = custFirstName;
+        CustLastName = custLastName;
+        CustHomePhone = custHomePhone;
+        CustEmail = custEmail;
     }
 
     @Override
-    public String toString() {
-        return customerId +
-                custFirstName + '\'' +
-                custLastName + '\'' +
-                custAddress + '\'' +
-                custCity + '\'' +
-                custProv + '\'' +
-                custPostal + '\'' +
-                custCountry + '\'' +
-                custHomePhone + '\'' +
-                custBusPhone + '\'' +
-                custEmail + '\'' +
-                agentId;
+    public String toString()
+    {
+        return CustId + " " + CustFirstName + " " + CustLastName+ " " + CustAddress + " " + CustCity
+                + " " + CustProv + " " + CustPostal + " " + CustCountry + " " + CustHomePhone
+                + " " + CustBusPhone + " " + CustEmail + " " + AgentId;
+    }
+
+    public Integer getCustId()
+    {
+        return CustId;
+    }
+
+    public String getCustFirstName()
+    {
+        return CustFirstName;
+    }
+
+    public String getCustLastName()
+    {
+        return CustLastName;
+    }
+
+    public String getCustAddress()
+    {
+        return CustAddress;
+    }
+
+    public String getCustCity()
+    {
+        return CustCity;
+    }
+
+    public String getCustProv()
+    {
+        return CustProv;
+    }
+
+    public String getCustPostal()
+    {
+        return CustPostal;
+    }
+
+    public String getCustCountry()
+    {
+        return CustCountry;
+    }
+
+    public String getCustHomePhone()
+    {
+        return CustHomePhone;
+    }
+
+    public String getCustBusPhone()
+    {
+        return CustBusPhone;
+    }
+
+    public String getCustEmail()
+    {
+        return CustEmail;
+    }
+
+    public Integer getAgentId()
+    {
+        return AgentId;
+    }
+
+    public void setCustId(Integer custId)
+    {
+        CustId = custId;
+    }
+
+    public void setCustFirstName(String custFirstName)
+    {
+        CustFirstName = custFirstName;
+    }
+
+    public void setCustLastName(String custLastName)
+    {
+        CustLastName = custLastName;
+    }
+
+    public void setCustAddress(String custAddress)
+    {
+        CustAddress = custAddress;
+    }
+
+    public void setCustCity(String custCity)
+    {
+        CustCity = custCity;
+    }
+
+    public void setCustProv(String custProv)
+    {
+        CustProv = custProv;
+    }
+
+    public void setCustPostal(String custPostal)
+    {
+        CustPostal = custPostal;
+    }
+
+    public void setCustCountry(String custCountry)
+    {
+        CustCountry = custCountry;
+    }
+
+    public void setCustHomePhone(String custHomePhone)
+    {
+        CustHomePhone = custHomePhone;
+    }
+
+    public void setCustBusPhone(String custBusPhone)
+    {
+        CustBusPhone = custBusPhone;
+    }
+
+    public void setCustEmail(String custEmail)
+    {
+        CustEmail = custEmail;
+    }
+
+    public void setAgentId(Integer agentId)
+    {
+        AgentId = agentId;
     }
 }
