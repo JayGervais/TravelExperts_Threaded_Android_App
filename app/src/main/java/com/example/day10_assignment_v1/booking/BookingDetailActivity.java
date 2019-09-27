@@ -20,8 +20,6 @@ public class BookingDetailActivity extends AppCompatActivity
             tvBasePrice, tvAgencyCommission, tvDescription, tvStartDate, tvEndDate, tvClassName,
             tvCustFirstName, tvCustLastName, tvCustEmail, tvCustPhone;
 
-    Button btnAgent;
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -62,9 +60,6 @@ public class BookingDetailActivity extends AppCompatActivity
         tvCustEmail = findViewById(R.id.tvCustEmail);
         tvCustPhone = findViewById(R.id.tvCustPhone);
 
-        // agent view
-        btnAgent = findViewById(R.id.btnAgent);
-
         // string builder for api call
         Uri.Builder bookingURL = new Uri.Builder();
         bookingURL.scheme("https").authority(DBHelper.apiAuth())
@@ -98,8 +93,5 @@ public class BookingDetailActivity extends AppCompatActivity
 
         //AgentDB.ThisAgent(agentAPI, this, String.valueOf(booking.getCustomerId()));
 
-
-
-        btnAgent.setText("Agent");
     }
 }

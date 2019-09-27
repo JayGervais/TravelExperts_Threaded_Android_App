@@ -128,7 +128,7 @@ public class AgentDB
                 try
                 {
                     JSONArray jsonArray = new JSONArray(s);
-                    String[] agents = new String[jsonArray.length()];
+
                     ArrayAdapter<Agent> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
                     for (int i = 0; i < jsonArray.length(); i++)
                     {
@@ -142,8 +142,6 @@ public class AgentDB
                                 obj.getString("AgtEmail"),
                                 obj.getString("AgtPosition"),
                                 Integer.parseInt(obj.getString("AgencyId"))));
-
-                        agents[i] = obj.getString("AgtFirstName") + " " + obj.getString("AgtLastName");
                     }
                     list.setAdapter(arrayAdapter);
                 } catch (JSONException e)
@@ -209,11 +207,58 @@ public class AgentDB
         getJSON.execute();
     }
 
+    // saves agency text view for agent details
+    public static void GetAgentAgencyText(final String urlWebService, final Context cont, final TextView txt)
+    {
+        class DownloadJSON extends AsyncTask<Void, Void, String>
+        {
+            @Override
+            protected void onPreExecute()
+            {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s)
+            {
+                super.onPostExecute(s);
+                try
+                {
+                    JSONArray jsonArray = new JSONArray(s);
+                    String[] agency = new String[jsonArray.length()];
+                    ArrayAdapter<Agency> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
+                    for (int i = 0; i < jsonArray.length(); i++)
+                    {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+
+                        arrayAdapter.add(new Agency(Integer.parseInt(
+                                obj.getString("AgencyId")),
+                                obj.getString("AgncyAddress"),
+                                obj.getString("AgncyCity")));
+
+                        agency[i] = obj.getString("AgncyAddress") + ", " + obj.getString("AgncyCity");
+                    }
+                    txt.setText(agency[0]);
+                } catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            protected String doInBackground(Void... voids)
+            {
+                return DBHelper.urlInputStream(urlWebService);
+            }
+        }
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
+    }
+
     // class designed for agent text view
     public static void SelectedAgentData(final String urlWebService, final Context cont,
-                                   final TextView tvAgtFirstName, final TextView tvAgtLastName,
-                                   final TextView tvAgtBusPhone, final  TextView tvAgtEmail,
-                                   final  TextView tvAgtPosition)
+                                   final EditText tvAgtFirstName, final EditText tvAgtMiddleInitial,
+                                         final EditText tvAgtLastName, final TextView tvAgtBusPhone,
+                                         final  TextView tvAgtEmail, final  TextView tvAgtPosition)
     {
         class DownloadJSON extends AsyncTask<Void, Void, String>
         {
@@ -232,6 +277,7 @@ public class AgentDB
                     JSONArray jsonArray = new JSONArray(s);
                     String[] agents = new String[jsonArray.length()];
                     String[] aFName = new String[jsonArray.length()];
+                    String[] aMName = new String[jsonArray.length()];
                     String[] aLName = new String[jsonArray.length()];
                     String[] aBusPhone = new String[jsonArray.length()];
                     String[] aEmail = new String[jsonArray.length()];
@@ -255,6 +301,7 @@ public class AgentDB
 
                         // set variables
                         aFName[i] = obj.getString("AgtFirstName");
+                        aMName[i] = obj.getString("AgtMiddleInitial");
                         aLName[i] = obj.getString("AgtLastName");
                         aBusPhone[i] = obj.getString("AgtBusPhone");
                         aEmail[i] = obj.getString("AgtEmail");
@@ -263,6 +310,7 @@ public class AgentDB
 
                     // set text fields
                     tvAgtFirstName.setText(aFName[0]);
+                    tvAgtLastName.setText(aMName[0]);
                     tvAgtLastName.setText(aLName[0]);
                     tvAgtBusPhone.setText(aBusPhone[0]);
                     tvAgtEmail.setText(aEmail[0]);

@@ -1,8 +1,9 @@
 package com.example.day10_assignment_v1.agent;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Agent implements Serializable
+public class Agent implements Parcelable
 {
     private Integer AgentId;
     private String AgtFirstName;
@@ -32,8 +33,9 @@ public class Agent implements Serializable
         AgencyId = agencyId;
     }
 
-    public Agent(String agtFirstName, String agtLastName, String agtPosition)
+    public Agent(Integer agentId, String agtFirstName, String agtLastName, String agtPosition)
     {
+        AgentId = agentId;
         AgtFirstName = agtFirstName;
         AgtLastName = agtLastName;
         AgtPosition = agtPosition;
@@ -72,7 +74,7 @@ public class Agent implements Serializable
         return AgencyId;
     }
 
-    public void setAgentId(int agentId)
+    public void setAgentId(Integer agentId)
     {
         AgentId = agentId;
     }
@@ -100,7 +102,7 @@ public class Agent implements Serializable
     {
         AgtPosition = agtPosition;
     }
-    public void setAgencyId(int agencyId)
+    public void setAgencyId(Integer agencyId)
     {
         AgencyId = agencyId;
     }
@@ -110,5 +112,60 @@ public class Agent implements Serializable
     {
         return AgtFirstName + " " + AgtLastName + ", " + AgtPosition;
     }
+
+
+//    @Override
+//    public String toString()
+//    {
+//        return "Agent{" +
+//                "AgentId=" + AgentId +
+//                ", AgtFirstName='" + AgtFirstName + '\'' +
+//                ", AgtMiddleInitial='" + AgtMiddleInitial + '\'' +
+//                ", AgtLastName='" + AgtLastName + '\'' +
+//                ", AgtBusPhone='" + AgtBusPhone + '\'' +
+//                ", AgtEmail='" + AgtEmail + '\'' +
+//                ", AgtPosition='" + AgtPosition + '\'' +
+//                ", AgencyId=" + AgencyId +
+//                '}';
+//    }
+
+    // Parcelling part
+    public Agent(Parcel in){
+        String[] data = new String[8];
+
+        in.readStringArray(data);
+        // the order needs to be the same as in writeToParcel() method
+        AgentId = Integer.valueOf(data[0]);
+        AgtFirstName = data[1];
+        AgtMiddleInitial = data[2];
+        AgtLastName = data[3];
+        AgtBusPhone = data[4];
+        AgtEmail = data[5];
+        AgtPosition = data[6];
+        AgencyId = Integer.valueOf(data[7]);
+    }
+
+    public int describeContents()
+    {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeStringArray(new String[] {
+                String.valueOf(AgentId), AgtFirstName, AgtMiddleInitial, AgtLastName,
+                AgtBusPhone, AgtEmail, AgtPosition, String.valueOf(AgencyId)
+        });
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Agent createFromParcel(Parcel in) {
+            return new Agent(in);
+        }
+        public Agent[] newArray(int size) {
+            return new Agent[size];
+        }
+    };
 
 }
