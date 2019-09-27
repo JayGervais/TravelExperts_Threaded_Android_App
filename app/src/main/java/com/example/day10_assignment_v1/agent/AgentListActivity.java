@@ -37,7 +37,7 @@ public class AgentListActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Intent intent = new Intent(getApplicationContext(), AgentEditActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AgentDetailActivity.class);
                 intent.putExtra("agent", (Agent) listAgents.getItemAtPosition(position));
                 startActivity(intent);
             }

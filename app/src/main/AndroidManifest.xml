@@ -13,15 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".booking.BookingDetailActivity"></activity>
-        <activity android:name=".booking.BookingListActivity" />
-        <activity android:name=".agent.AgentListActivity" />
-        <activity android:name=".agent.AgentEditActivity" />
-        <activity android:name=".agent.AddAgentActivity">
+        <activity android:name=".booking.BookingDetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".agent.AgentListActivity" />
+                android:value=".booking.BookingDetailActivity" />
         </activity>
+        <activity android:name=".booking.BookingListActivity"/>
+        <activity android:name=".agent.AgentListActivity" />
+        <activity android:name=".agent.AgentEditActivity" />
+        <activity android:name=".agent.AddAgentActivity"/>
         <activity android:name=".agent.AgentDetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
