@@ -1,4 +1,4 @@
-package com.example.day10_assignment_v1.Customer;
+package com.example.day10_assignment_v1.customer;
 
 public class Customer {
     private Integer CustId;

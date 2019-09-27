@@ -1,6 +1,5 @@
 package com.example.day10_assignment_v1.booking;
 
-import android.content.Context;
 import android.net.Uri;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,11 +9,10 @@ import androidx.core.app.NavUtils;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.day10_assignment_v1.Customer.CustomerDB;
+import com.example.day10_assignment_v1.customer.CustomerDB;
 import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.R;
 import com.example.day10_assignment_v1.agent.Agent;
-import com.example.day10_assignment_v1.agent.AgentDB;
 
 public class BookingDetailActivity extends AppCompatActivity
 {

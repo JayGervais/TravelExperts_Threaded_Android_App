@@ -1,4 +1,4 @@
-package com.example.day10_assignment_v1.Customer;
+package com.example.day10_assignment_v1.customer;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -6,7 +6,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.day10_assignment_v1.DBHelper;
-import com.example.day10_assignment_v1.agent.Agent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
