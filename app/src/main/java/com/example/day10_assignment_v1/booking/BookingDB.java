@@ -2,23 +2,23 @@ package com.example.day10_assignment_v1.booking;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.day10_assignment_v1.DBHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +27,9 @@ import java.util.Locale;
 public class BookingDB
 {
     // get booking summary data to display in fragment
-    public static void BookingListData(final String urlWebService, final Context cont, final ListView list)
+    public static void BookingListData(final String urlWebService, final Context cont,
+                                       final ListView list, final TextView baseTotal,
+                                       final TextView commTotal)
     {
         class DownloadJSON extends AsyncTask<Void, Void, String>
         {
@@ -45,6 +47,10 @@ public class BookingDB
                 {
                     JSONArray jsonArray = new JSONArray(s);
                     String[] bookings = new String[jsonArray.length()];
+                    Double[] bookingTotal = new Double[jsonArray.length()];
+                    Double[] commissionTotal = new Double[jsonArray.length()];
+                    Double finalBookingSum = 0.0;
+                    Double finalCommissionSum = 0.0;
 
                     ArrayAdapter<Booking> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
                     for (int i = 0; i < jsonArray.length(); i++)
@@ -67,9 +73,21 @@ public class BookingDB
                                 ));
 
                         bookings[i] = obj.getInt("BookingId") + obj.getString("BookingDate");
-                    }
 
+                        // get total sum of bookings
+                        bookingTotal[i] = obj.getDouble("BasePrice");
+                        finalBookingSum = finalBookingSum + bookingTotal[i];
+                        // get total commission sum
+                        commissionTotal[i] = obj.getDouble("AgencyCommission");
+                        finalCommissionSum = finalCommissionSum + commissionTotal[i];
+                    }
                     list.setAdapter(arrayAdapter);
+
+                    NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
+                    String finalBookingFormat = currencyFormat.format(finalBookingSum);
+                    String finalCommissionFormat = currencyFormat.format(finalCommissionSum);
+                    baseTotal.setText(String.valueOf(finalBookingFormat));
+                    commTotal.setText(String.valueOf(finalCommissionFormat));
 
                 } catch (JSONException e)
                 {
@@ -89,6 +107,7 @@ public class BookingDB
         getJSON.execute();
     }
 
+    // redo this for easier re-usability **
     public static void BookingData(final String urlWebService, final Context cont,
                                    final TextView tvBookingDate, final TextView tvBookingNo,
                                    final TextView tvTravelerCount, final  TextView tvDestination,
@@ -192,5 +211,58 @@ public class BookingDB
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
     }
+
+    // class for getting summary values
+//    public static void BookingData(final String urlWebService, final Context cont, TextView text)
+//    {
+//        class DownloadJSON extends AsyncTask<Void, Void, String>
+//        {
+//            @Override
+//            protected void onPreExecute()
+//            {
+//                super.onPreExecute();
+//            }
+//
+//            @Override
+//            protected void onPostExecute(String s)
+//            {
+//                super.onPostExecute(s);
+//                try
+//                {
+//                    JSONArray jsonArray = new JSONArray(s);
+//                    String[] bookingTotal = new String[jsonArray.length()];
+//                    ArrayAdapter<Booking> arrayAdapter = null;
+//                    for (int i = 0; i < jsonArray.length(); i++)
+//                    {
+//                        JSONObject obj = jsonArray.getJSONObject(i);
+//
+//                        arrayAdapter.add(new BookingSum(
+//                                BigDecimal.valueOf(obj.getDouble("BasePrice"))
+//                        ));
+//                        // set variables
+//                        bookings[i] = obj.getInt("BookingId") + obj.getString("BookingDate")
+//                    }
+//                    // set text fields
+//                    tvBookingDate.setText(bDate[0]);
+//                } catch (JSONException e)
+//                {
+//                    e.printStackTrace();
+//                } catch (ParseException e)
+//                {
+//                    e.printStackTrace();
+//                }
+//            }
+//            @Override
+//            protected String doInBackground(Void... voids)
+//            {
+//                return DBHelper.urlInputStream(urlWebService);
+//            }
+//        }
+//        DownloadJSON getJSON = new DownloadJSON();
+//        getJSON.execute();
+//    }
+
+
+
 
 }

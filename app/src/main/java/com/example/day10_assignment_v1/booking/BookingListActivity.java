@@ -21,7 +21,8 @@ import com.example.day10_assignment_v1.agent.AgentListActivity;
 public class BookingListActivity extends AppCompatActivity
 {
     ListView listBookings;
-    TextView txtBookingDate, txtBookingDescription, txtBasePrice, txtCommission;
+    TextView txtBookingDate, txtBookingDescription, txtBasePrice, txtCommission, tvBookingTotal,
+            tvCommissionTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +34,8 @@ public class BookingListActivity extends AppCompatActivity
         txtBookingDescription = findViewById(R.id.txtBookingDescription);
         txtBasePrice = findViewById(R.id.tvBasePrice);
         txtCommission = findViewById(R.id.txtCommission);
+        tvBookingTotal = findViewById(R.id.tvBookingTotal);
+        tvCommissionTotal = findViewById(R.id.tvCommissionTotal);
 
         listBookings = findViewById(R.id.listBookings);
 
@@ -48,7 +51,7 @@ public class BookingListActivity extends AppCompatActivity
         });
 
         BookingDB.BookingListData(DBHelper.apiURL() + "/api/booking_data.php",
-                this, listBookings);
+                this, listBookings, tvBookingTotal, tvCommissionTotal);
     }
 
     @Override
