@@ -113,21 +113,6 @@ public class Agent implements Parcelable
         return AgtFirstName + " " + AgtLastName + ", " + AgtPosition;
     }
 
-//    @Override
-//    public String toString()
-//    {
-//        return "Agent{" +
-//                "AgentId=" + AgentId +
-//                ", AgtFirstName='" + AgtFirstName + '\'' +
-//                ", AgtMiddleInitial='" + AgtMiddleInitial + '\'' +
-//                ", AgtLastName='" + AgtLastName + '\'' +
-//                ", AgtBusPhone='" + AgtBusPhone + '\'' +
-//                ", AgtEmail='" + AgtEmail + '\'' +
-//                ", AgtPosition='" + AgtPosition + '\'' +
-//                ", AgencyId=" + AgencyId +
-//                '}';
-//    }
-
     // Parcelling part
     public Agent(Parcel in){
         String[] data = new String[8];

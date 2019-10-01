@@ -24,6 +24,8 @@ public class BookingListActivity extends AppCompatActivity
     TextView txtBookingDate, txtBookingDescription, txtBasePrice, txtCommission, tvBookingTotal,
             tvCommissionTotal;
 
+    TextView startDate, endDate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,6 +39,8 @@ public class BookingListActivity extends AppCompatActivity
         tvBookingTotal = findViewById(R.id.tvBookingTotal);
         tvCommissionTotal = findViewById(R.id.tvCommissionTotal);
 
+        startDate = findViewById(R.id.startDate);
+        endDate = findViewById(R.id.endDate);
         listBookings = findViewById(R.id.listBookings);
 
         listBookings.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -49,6 +53,9 @@ public class BookingListActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+        // get booking date selection values
+        BookingDateSelect.BookDate(this, startDate, endDate);
 
         BookingDB.BookingListData(DBHelper.apiURL() + "/api/booking_data.php",
                 this, listBookings, tvBookingTotal, tvCommissionTotal);
@@ -73,9 +80,9 @@ public class BookingListActivity extends AppCompatActivity
             case R.id.menu_agents:
                 startActivity(new Intent(this, AgentListActivity.class));
                 return true;
-//            case R.id.menu_bookings:
-//                startActivity(new Intent(this, BookingListActivity.class));
-//                return true;
+            case R.id.menu_bookings:
+                startActivity(new Intent(this, BookingListActivity.class));
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

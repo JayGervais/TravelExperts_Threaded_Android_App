@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextView26" />
+        app:layout_constraintTop_toBottomOf="@+id/startDate" />
 
     <TextView
         android:id="@+id/textView25"
@@ -62,5 +62,44 @@
         android:text="Commission"
         app:layout_constraintBottom_toBottomOf="@+id/TextView26"
         app:layout_constraintStart_toEndOf="@+id/TextView26" />
+
+    <TextView
+        android:id="@+id/startDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:text="Start Date"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintStart_toStartOf="@+id/TextView26"
+        app:layout_constraintTop_toBottomOf="@+id/TextView26" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="to"
+        app:layout_constraintBottom_toBottomOf="@+id/startDate"
+        app:layout_constraintStart_toEndOf="@+id/startDate" />
+
+    <TextView
+        android:id="@+id/endDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="End Date"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toBottomOf="@+id/textView27"
+        app:layout_constraintStart_toEndOf="@+id/textView27" />
+
+    <Button
+        android:id="@+id/btnShowDates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Dates"
+        android:onClick="showDates"
+        app:layout_constraintBottom_toTopOf="@+id/listBookings"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
