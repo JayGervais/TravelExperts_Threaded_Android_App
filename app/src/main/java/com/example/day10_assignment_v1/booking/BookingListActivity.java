@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ public class BookingListActivity extends AppCompatActivity
     TextView txtBookingDate, txtBookingDescription, txtBasePrice, txtCommission, tvBookingTotal,
             tvCommissionTotal;
 
+    // date selector text fields
     TextView startDate, endDate;
 
     @Override
@@ -57,10 +60,39 @@ public class BookingListActivity extends AppCompatActivity
         // get booking date selection values
         BookingDateSelect.BookDate(this, startDate, endDate);
 
-        BookingDB.BookingListData(DBHelper.apiURL() + "/api/booking_data.php",
-                this, listBookings, tvBookingTotal, tvCommissionTotal);
+
+        Intent intent = getIntent();
+
+        if (intent.hasExtra("startingDate") && intent.hasExtra("endingDate"))
+        {
+            String startingDate = intent.getStringExtra("startingDate");
+            String endingDate = intent.getStringExtra("endingDate");
+
+            startDate.setText(startingDate);
+            endDate.setText(endingDate);
+
+            // url builder for date select query
+            Uri.Builder dateBuilder = new Uri.Builder();
+            dateBuilder.scheme("https").authority(DBHelper.apiAuth())
+                    .appendPath("api")
+                    .appendPath("booking_data_dates.php")
+                    .appendQueryParameter("StartDate", startingDate)
+                    .appendQueryParameter("EndDate", endingDate);
+            String myDateSelectUrl = dateBuilder.build().toString();
+
+            BookingDB.BookingListData(myDateSelectUrl, this, listBookings, tvBookingTotal, tvCommissionTotal);
+        }
+        else
+        {
+            // gets all booking data
+            BookingDB.BookingListData(DBHelper.apiURL() + "/api/booking_data.php",
+                    this, listBookings, tvBookingTotal, tvCommissionTotal);
+        }
+
+
     }
 
+    // main menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -85,5 +117,18 @@ public class BookingListActivity extends AppCompatActivity
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showDates(View view)
+    {
+        BookingDate bookingDate = new BookingDate(String.valueOf(startDate.getText()), String.valueOf(endDate.getText()));
+        String startingDate = bookingDate.StartDate;
+        String endingDate = bookingDate.EndDate;
+
+        Intent intent = getIntent();
+        intent.putExtra("startingDate", startingDate);
+        intent.putExtra("endingDate", endingDate);
+        finish();
+        startActivity(intent);
     }
 }

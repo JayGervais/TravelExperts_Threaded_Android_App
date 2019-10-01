@@ -84,14 +84,13 @@ public class BookingDetailActivity extends AppCompatActivity
 
         final Agent agent = (Agent) getIntent().getSerializableExtra("agent");
 
-        Uri.Builder agentURL = new Uri.Builder();
-        agentURL.scheme("https").authority(DBHelper.apiAuth())
-                .appendPath("api")
-                .appendPath("agent_data_select.php")
-                .appendQueryParameter("CustomerId", String.valueOf(booking.getCustomerId()));
-        String agentAPI = customerURL.build().toString();
+//        Uri.Builder agentURL = new Uri.Builder();
+//        agentURL.scheme("https").authority(DBHelper.apiAuth())
+//                .appendPath("api")
+//                .appendPath("agent_data_select.php")
+//                .appendQueryParameter("CustomerId", String.valueOf(booking.getCustomerId()));
+//        String agentAPI = customerURL.build().toString();
 
         //AgentDB.ThisAgent(agentAPI, this, String.valueOf(booking.getCustomerId()));
-
     }
 }
