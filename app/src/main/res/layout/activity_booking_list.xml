@@ -42,7 +42,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Total"
         app:layout_constraintBottom_toBottomOf="@+id/textView25"
         app:layout_constraintStart_toEndOf="@+id/textView25" />
 
@@ -59,7 +58,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Commission"
         app:layout_constraintBottom_toBottomOf="@+id/TextView26"
         app:layout_constraintStart_toEndOf="@+id/TextView26" />
 

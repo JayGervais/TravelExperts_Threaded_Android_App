@@ -3,6 +3,7 @@ package com.example.day10_assignment_v1.booking;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import java.util.Locale;
 public class BookingDateSelect
 {
     public static void BookDate(final Context cont, final TextView startDate,
-                                final TextView endDate)
+                                final TextView endDate, final Button dateButton)
     {
         final Calendar calStartDate = Calendar.getInstance();
         final Calendar calEndDate = Calendar.getInstance();
@@ -36,6 +37,7 @@ public class BookingDateSelect
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
                 startDate.setText(sdf.format(calStartDate.getTime()));
+                dateButton.setEnabled(true);
             }
         };
 

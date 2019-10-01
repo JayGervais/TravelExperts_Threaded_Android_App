@@ -104,12 +104,6 @@ public class AgentEditActivity  extends AppCompatActivity
         AgentDB.GetAgentListString(myUrl,
                 AgentEditActivity.this, etAgency);
 
-//        textFieldEnabled(false);
-//        btnSave.setEnabled(false);
-//        btnDelete.setEnabled(false);
-//        btnCancel.setEnabled(false);
-//        etAgency.setEnabled(false);
-
         spinAgencies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override

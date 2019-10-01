@@ -31,6 +31,7 @@ public class Booking implements Serializable
                    Date bookingDate,
                    Integer travelerCount,
                    String description,
+                   String destination,
                    BigDecimal basePrice,
                    BigDecimal agencyCommission,
                    Date startDate,
@@ -43,6 +44,7 @@ public class Booking implements Serializable
         BookingDate = bookingDate;
         TravelerCount = travelerCount;
         Description = description;
+        Destination = destination;
         BasePrice = basePrice;
         AgencyCommission = agencyCommission;
         StartDate = startDate;
@@ -68,7 +70,7 @@ public class Booking implements Serializable
         String baseFormat = currencyFormat.format(BasePrice);
         String commissionFormat = currencyFormat.format(AgencyCommission);
 
-        return dateFormat + "\n" + Description + "\n" +
+        return dateFormat + " - " + Destination + "\n" +
                 "Base: " + baseFormat + ", Commission: " + commissionFormat;
     }
 

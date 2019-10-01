@@ -13,7 +13,6 @@ public class CustomerDetailActivity extends AppCompatActivity {
             etCustCity, etCustProv, etCustPostal, etCustCountry, etCustHomePhone,
             etCustBusPhone, etCustEmail;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
