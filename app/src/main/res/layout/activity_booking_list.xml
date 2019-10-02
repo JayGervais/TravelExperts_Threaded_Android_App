@@ -5,7 +5,7 @@
     android:id="@+id/bookingLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:paddingTop="16dp"
     tools:context=".booking.BookingListActivity">
 
     <TextView
@@ -13,9 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:text="Bookings"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#015E50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:background="#d7f5d5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,8 +96,12 @@
         android:id="@+id/btnShowDates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show Dates"
         android:onClick="showDates"
+        android:background="#222E6D7D"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textColor="#00838F"
+        android:text="Show Dates"
         app:layout_constraintBottom_toTopOf="@+id/listBookings"
         app:layout_constraintEnd_toEndOf="parent" />
 

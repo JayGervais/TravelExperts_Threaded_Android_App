@@ -121,22 +121,36 @@
                 </TableRow>
 
             </TableLayout>
-
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
             <Button
                 android:id="@+id/btnSave"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#222E6D7D"
+                android:paddingLeft="16dp"
                 android:paddingTop="16dp"
+                android:paddingRight="16dp"
                 android:paddingBottom="16dp"
                 android:text="Save Changes"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#00838F" />
 
             <Button
                 android:id="@+id/btnCancel"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#222E6D7D"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="@android:string/cancel"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#00838F" />
+        </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

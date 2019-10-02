@@ -31,6 +31,8 @@
                 android:contextClickable="false"
                 android:cursorVisible="false"
                 android:duplicateParentState="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#790C0B0B"
                 android:ems="10"
                 android:enabled="false"
                 android:focusable="false"
@@ -46,6 +48,8 @@
                 android:id="@+id/etAgtFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#790C0B0B"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -59,6 +63,8 @@
                 android:id="@+id/etAgtMiddleInitial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#790C0B0B"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -72,6 +78,8 @@
                 android:id="@+id/etAgtLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#790C0B0B"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -85,6 +93,8 @@
                 android:id="@+id/etAgtBusPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#790C0B0B"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -98,6 +108,8 @@
                 android:id="@+id/etAgtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#790C0B0B"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -111,6 +123,8 @@
                 android:id="@+id/etAgtPosition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#790C0B0B"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -124,6 +138,8 @@
                 android:id="@+id/etAgency"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#790C0B0B"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -131,6 +147,8 @@
                 android:id="@+id/spinAgencies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#790C0B0B"
                 android:layout_marginTop="-35dp" />
 
             <RelativeLayout
@@ -142,11 +160,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_gravity="right"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
+                    android:background="#222E6D7D"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColor="#00838F"
                     android:text="Delete"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -157,20 +178,25 @@
                     android:layout_alignParentLeft="true"
                     android:layout_gravity="left"
                     android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#222E6D7D"
                     android:paddingLeft="16dp"
                     android:paddingTop="16dp"
                     android:paddingRight="16dp"
                     android:paddingBottom="16dp"
                     android:text="Save Changes"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#00838F" />
             </RelativeLayout>
 
             <Button
                 android:id="@+id/btnCancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#222E6D7D"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
+                android:textColor="#00838F"
                 android:text="@android:string/cancel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".agent.AgentListActivity">
 
     <TextView
@@ -15,6 +14,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/agent_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#015E50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +26,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
+        android:background="#d7f5d5"
         android:headerDividersEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +41,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:background="#222E6D7D"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textColor="#00838F"
         android:text="Add New Agent"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent" />
