@@ -1,38 +1,31 @@
 package com.example.day10_assignment_v1.agent;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
-import android.content.ClipData;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.R;
-import com.example.day10_assignment_v1.agency.Agency;
-import com.example.day10_assignment_v1.agency.AgencyDB;
-
-import java.util.ArrayList;
+import com.example.day10_assignment_v1.booking.BookingDB;
 
 public class AgentDetailActivity extends AppCompatActivity
 {
     TextView tvAgtFirstName, tvAgtMiddleInitial, tvAgtLastName,
             tvAgtBusPhone, tvAgtEmail, tvAgtPosition, tvAgency;
 
+    TextView tvTotalSales, tvTotalCommission;
+
     Button buttonEdit;
+
+    ListView listAgentSales;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -64,6 +57,10 @@ public class AgentDetailActivity extends AppCompatActivity
         tvAgtPosition = findViewById(R.id.tvAgntPosition);
         tvAgency = findViewById(R.id.tvAgntAgency);
 
+        tvTotalSales = findViewById(R.id.tvTotalSales);
+        tvTotalCommission = findViewById(R.id.tvTotalCommission);
+        listAgentSales = findViewById(R.id.listAgentSales);
+
         // buttons
         buttonEdit = findViewById(R.id.buttonEdit);
 
@@ -77,6 +74,17 @@ public class AgentDetailActivity extends AppCompatActivity
         final String agtEmail = agentObj.getAgtEmail();
         final String agtPos = agentObj.getAgtPosition();
         final Integer agencyId = agentObj.getAgencyId();
+
+        // agent booking data list
+        Uri.Builder agentBookingURL = new Uri.Builder();
+        agentBookingURL.scheme("https").authority(DBHelper.apiAuth())
+                .appendPath("api")
+                .appendPath("agent_booking_data.php")
+                .appendQueryParameter("AgentId", String.valueOf(agentId));
+        String agentBookingAPI = agentBookingURL.build().toString();
+
+        BookingDB.BookingListData(agentBookingAPI, this, listAgentSales,
+                tvTotalSales, tvTotalCommission);
 
         tvAgtFirstName.setText(agtFirsName);
         if (!agtMiddleInitial.equals("null"))

@@ -17,7 +17,6 @@
             android:id="@+id/tvTravelerCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Count"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -26,7 +25,6 @@
             android:id="@+id/tvAgencyCommission"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Commission"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="@+id/textView14"
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
@@ -53,7 +51,6 @@
             android:id="@+id/tvDestination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Destination"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -71,7 +68,6 @@
             android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trip Description"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -89,7 +85,6 @@
             android:id="@+id/tvStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="StartDate"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -107,7 +102,6 @@
             android:id="@+id/tvClassName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ClassName"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
@@ -125,7 +119,6 @@
             android:id="@+id/tvEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="EndDate"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="@+id/textView11"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -171,7 +164,6 @@
             android:id="@+id/tvBasePrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="@+id/textView12"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -199,7 +191,6 @@
             android:id="@+id/tvCustFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FirstName"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -217,7 +208,6 @@
             android:id="@+id/tvCustLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LastName"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="@+id/textView17"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
@@ -235,7 +225,6 @@
             android:id="@+id/tvCustEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CustEmail"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
@@ -253,7 +242,6 @@
             android:id="@+id/tvCustPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CustPhone"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="@+id/textView22"
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
