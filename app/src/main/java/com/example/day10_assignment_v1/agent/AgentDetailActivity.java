@@ -8,13 +8,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.R;
+import com.example.day10_assignment_v1.booking.Booking;
 import com.example.day10_assignment_v1.booking.BookingDB;
+import com.example.day10_assignment_v1.booking.BookingDetailActivity;
 
 public class AgentDetailActivity extends AppCompatActivity
 {
@@ -85,6 +88,17 @@ public class AgentDetailActivity extends AppCompatActivity
 
         BookingDB.BookingListData(agentBookingAPI, this, listAgentSales,
                 tvTotalSales, tvTotalCommission);
+
+        listAgentSales.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent intent = new Intent(getApplicationContext(), BookingDetailActivity.class);
+                intent.putExtra("booking", (Booking) listAgentSales.getItemAtPosition(position));
+                startActivity(intent);
+            }
+        });
 
         tvAgtFirstName.setText(agtFirsName);
         if (!agtMiddleInitial.equals("null"))
