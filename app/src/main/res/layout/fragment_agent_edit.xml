@@ -164,10 +164,10 @@
                     android:layout_marginTop="16dp"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
-                    android:background="#222E6D7D"
+                    android:background="#22a15f"
+                    android:textColor="#FFFFFF"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:textColor="#00838F"
                     android:text="Delete"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -179,24 +179,24 @@
                     android:layout_gravity="left"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    android:background="#222E6D7D"
+                    android:background="#22a15f"
+                    android:textColor="#FFFFFF"
                     android:paddingLeft="16dp"
                     android:paddingTop="16dp"
                     android:paddingRight="16dp"
                     android:paddingBottom="16dp"
                     android:text="Save Changes"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="#00838F" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
             </RelativeLayout>
 
             <Button
                 android:id="@+id/btnCancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#222E6D7D"
+                android:background="#22a15f"
+                android:textColor="#FFFFFF"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:textColor="#00838F"
                 android:text="@android:string/cancel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

@@ -153,11 +153,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
-            android:background="#222E6D7D"
+            android:background="#22a15f"
+            android:textColor="#FFFFFF"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:text="Edit Agent"
-            android:textColor="#00838F"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -206,7 +206,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:background="#e1ede7"
+            android:background="#dfe6e1"
             android:fadeScrollbars="true"
             android:fastScrollAlwaysVisible="true"
             android:fastScrollEnabled="true"
