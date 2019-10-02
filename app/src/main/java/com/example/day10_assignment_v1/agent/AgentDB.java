@@ -253,4 +253,81 @@ public class AgentDB
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
     }
+
+    // get agent details for bookings page
+    public static void GetBookingAgentDetails(final String urlWebService, final Context cont, final TextView tvAgentFirstName,
+                                              final TextView tvAgentMiddleInitial, final TextView tvAgentLastName, final TextView tvAgtEmail,
+                                              final TextView tvAgtBusPhone, final TextView tvAgtPosition)
+    {
+        class DownloadJSON extends AsyncTask<Void, Void, String>
+        {
+            @Override
+            protected void onPreExecute()
+            {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s)
+            {
+                super.onPostExecute(s);
+                try
+                {
+                    JSONArray jsonArray = new JSONArray(s);
+                    String[] agency = new String[jsonArray.length()];
+                    String[] aFName = new String[jsonArray.length()];
+                    String[] aMName = new String[jsonArray.length()];
+                    String[] aLName = new String[jsonArray.length()];
+                    String[] aEmail = new String[jsonArray.length()];
+                    String[] aBPhone = new String[jsonArray.length()];
+                    String[] aPos = new String[jsonArray.length()];
+
+                    ArrayAdapter<Agent> arrayAdapter = new ArrayAdapter<>(cont, android.R.layout.simple_list_item_1);
+                    for (int i = 0; i < jsonArray.length(); i++)
+                    {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+
+                        arrayAdapter.add(new Agent(Integer.parseInt(obj.getString("AgentId")),
+                                obj.getString("AgtFirstName"),
+                                obj.getString("AgtMiddleInitial"),
+                                obj.getString("AgtLastName"),
+                                obj.getString("AgtBusPhone"),
+                                obj.getString("AgtEmail"),
+                                obj.getString("AgtPosition"),
+                                Integer.parseInt(obj.getString("AgencyId"))));
+
+                        aFName[i] = obj.getString("AgtFirstName");
+                        if (aMName[i] != null)
+                        {
+                            aMName[i] = obj.getString("AgtMiddleInitial");
+                        }
+                        aLName[i] = obj.getString("AgtLastName");
+                        aEmail[i] = obj.getString("AgtEmail");
+                        aBPhone[i] = obj.getString("AgtBusPhone");
+                        aPos[i] = obj.getString("AgtPosition");
+
+                    }
+                    tvAgentFirstName.setText(aFName[0]);
+                    if (aMName[0] != null)
+                    {
+                        tvAgentMiddleInitial.setText(aMName[0]);
+                    }
+                    tvAgentLastName.setText(aLName[0]);
+                    tvAgtEmail.setText(aEmail[0]);
+                    tvAgtBusPhone.setText(aBPhone[0]);
+                    tvAgtPosition.setText(aPos[0]);
+                } catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            protected String doInBackground(Void... voids)
+            {
+                return DBHelper.urlInputStream(urlWebService);
+            }
+        }
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
+    }
 }

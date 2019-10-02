@@ -9,6 +9,7 @@ import androidx.core.app.NavUtils;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.day10_assignment_v1.agent.AgentDB;
 import com.example.day10_assignment_v1.customer.CustomerDB;
 import com.example.day10_assignment_v1.DBHelper;
 import com.example.day10_assignment_v1.R;
@@ -19,6 +20,9 @@ public class BookingDetailActivity extends AppCompatActivity
     TextView tvBookingDate, tvBookingNumber, tvTravelerCount, tvDestination,
             tvBasePrice, tvAgencyCommission, tvDescription, tvStartDate, tvEndDate, tvClassName,
             tvCustFirstName, tvCustLastName, tvCustEmail, tvCustPhone;
+
+    // agent details
+    TextView tvAgtFirstName, tvAgtMiddleInitial, tvAgtLastName, tvAgtEmail, tvAgtBusPhone, tvAgtPosition;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -60,6 +64,14 @@ public class BookingDetailActivity extends AppCompatActivity
         tvCustEmail = findViewById(R.id.tvCustEmail);
         tvCustPhone = findViewById(R.id.tvCustPhone);
 
+        // agent view
+        tvAgtFirstName = findViewById(R.id.tvAgtFirstName);
+        tvAgtMiddleInitial = findViewById(R.id.tvAgntMiddleInitial);
+        tvAgtLastName = findViewById(R.id.tvAgtLastName);
+        tvAgtEmail = findViewById(R.id.tvAgtEmail);
+        tvAgtBusPhone = findViewById(R.id.tvAgtPhone);
+        tvAgtPosition = findViewById(R.id.tvAgtPosition);
+
         // string builder for api call
         Uri.Builder bookingURL = new Uri.Builder();
         bookingURL.scheme("https").authority(DBHelper.apiAuth())
@@ -84,13 +96,15 @@ public class BookingDetailActivity extends AppCompatActivity
 
         final Agent agent = (Agent) getIntent().getSerializableExtra("agent");
 
-//        Uri.Builder agentURL = new Uri.Builder();
-//        agentURL.scheme("https").authority(DBHelper.apiAuth())
-//                .appendPath("api")
-//                .appendPath("agent_data_select.php")
-//                .appendQueryParameter("CustomerId", String.valueOf(booking.getCustomerId()));
-//        String agentAPI = customerURL.build().toString();
+        // agent booking data
+        Uri.Builder agentBookingURL = new Uri.Builder();
+        agentBookingURL.scheme("https").authority(DBHelper.apiAuth())
+                .appendPath("api")
+                .appendPath("booking_agent_data.php")
+                .appendQueryParameter("BookingId", String.valueOf(booking.getBookingId()));
+        String agentBookingAPI = agentBookingURL.build().toString();
 
-        //AgentDB.ThisAgent(agentAPI, this, String.valueOf(booking.getCustomerId()));
+        AgentDB.GetBookingAgentDetails(agentBookingAPI, this, tvAgtFirstName, tvAgtMiddleInitial,
+                tvAgtLastName, tvAgtEmail, tvAgtBusPhone, tvAgtPosition);
     }
 }
