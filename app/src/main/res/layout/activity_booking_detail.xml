@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="Destination:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintBottom_toBottomOf="@+id/textView8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView8"
@@ -56,7 +56,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Date"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView26" />
@@ -76,7 +75,7 @@
             android:layout_marginTop="8dp"
             android:text="Description:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTravelerCount" />
 
@@ -95,7 +94,7 @@
             android:layout_marginTop="8dp"
             android:text="Start Date:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvClassName" />
 
@@ -114,7 +113,7 @@
             android:layout_marginTop="8dp"
             android:text="Class:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
@@ -132,10 +131,10 @@
             android:layout_height="wrap_content"
             android:text="End Date:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintBottom_toBottomOf="@+id/textView7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView7"
+            app:layout_constraintEnd_toEndOf="@+id/textView10"
+            app:layout_constraintStart_toStartOf="@+id/textView10"
             app:layout_constraintTop_toTopOf="@+id/textView7" />
 
         <TextView
@@ -152,10 +151,10 @@
             android:layout_height="wrap_content"
             android:text="Commission:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintBottom_toBottomOf="@+id/textView12"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintEnd_toEndOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="@+id/textView11"
             app:layout_constraintTop_toTopOf="@+id/textView12" />
 
         <TextView
@@ -165,7 +164,7 @@
             android:layout_marginTop="8dp"
             android:text="Travelers:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintBottom_toTopOf="@+id/tvBookingDate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView26" />
@@ -177,7 +176,7 @@
             android:layout_marginTop="8dp"
             android:text="Travelers:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvBookingDate" />
 
@@ -187,7 +186,6 @@
             android:layout_height="wrap_content"
             android:text="Number"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintBottom_toBottomOf="@+id/textView26"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView26" />
 
@@ -198,7 +196,7 @@
             android:layout_marginTop="8dp"
             android:text="Base Price:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvStartDate" />
 
@@ -227,7 +225,7 @@
             android:layout_height="wrap_content"
             android:text="Name:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -249,13 +247,13 @@
             app:layout_constraintStart_toEndOf="@+id/tvCustFirstName" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/lblCustEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Email:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCustFirstName" />
 
@@ -263,9 +261,10 @@
             android:id="@+id/tvCustEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="N/A"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintTop_toBottomOf="@+id/lblCustEmail" />
 
         <TextView
             android:id="@+id/textView22"
@@ -274,7 +273,7 @@
             android:layout_marginTop="8dp"
             android:text="Phone:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCustEmail" />
 
@@ -303,7 +302,7 @@
             android:layout_height="wrap_content"
             android:text="Name:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -319,7 +318,7 @@
             android:id="@+id/tvAgtMiddleInitial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="1dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="@+id/tvAgtFirstName"
             app:layout_constraintStart_toEndOf="@+id/tvAgtFirstName" />
@@ -328,7 +327,7 @@
             android:id="@+id/tvAgtLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="1dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="@+id/tvAgtMiddleInitial"
             app:layout_constraintStart_toEndOf="@+id/tvAgtMiddleInitial" />
@@ -340,7 +339,7 @@
             android:layout_marginTop="8dp"
             android:text="Email:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAgtFirstName" />
 
@@ -359,7 +358,7 @@
             android:layout_marginTop="8dp"
             android:text="Phone:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAgtEmail" />
 
@@ -378,7 +377,7 @@
             android:layout_marginTop="8dp"
             android:text="Position:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#790C0B0B"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAgtPhone" />
 

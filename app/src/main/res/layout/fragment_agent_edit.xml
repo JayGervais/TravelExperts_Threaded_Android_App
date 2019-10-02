@@ -31,12 +31,12 @@
                 android:contextClickable="false"
                 android:cursorVisible="false"
                 android:duplicateParentState="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="#790C0B0B"
                 android:ems="10"
                 android:enabled="false"
                 android:focusable="false"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#015E50" />
 
             <TextView
                 android:id="@+id/lblAgtFirstName"
@@ -48,10 +48,10 @@
                 android:id="@+id/etAgtFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="#790C0B0B"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#015E50" />
 
             <TextView
                 android:id="@+id/lblAgtMiddleInitial"
@@ -63,10 +63,10 @@
                 android:id="@+id/etAgtMiddleInitial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="#790C0B0B"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#015E50" />
 
             <TextView
                 android:id="@+id/lblAgtLastName"
@@ -78,10 +78,10 @@
                 android:id="@+id/etAgtLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="#790C0B0B"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#015E50" />
 
             <TextView
                 android:id="@+id/lblAgtBusPhone"
@@ -93,10 +93,10 @@
                 android:id="@+id/etAgtBusPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="#790C0B0B"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#015E50" />
 
             <TextView
                 android:id="@+id/lblAgtEmail"
@@ -108,10 +108,10 @@
                 android:id="@+id/etAgtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="#790C0B0B"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#015E50" />
 
             <TextView
                 android:id="@+id/lblPosition"
@@ -123,10 +123,10 @@
                 android:id="@+id/etAgtPosition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="#790C0B0B"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#015E50" />
 
             <TextView
                 android:id="@+id/lblAgencyId"
@@ -147,9 +147,9 @@
                 android:id="@+id/spinAgencies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-35dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="#790C0B0B"
-                android:layout_marginTop="-35dp" />
+                android:textColor="#015E50" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -72,7 +72,7 @@ public class BookingDetailActivity extends AppCompatActivity
         tvAgtBusPhone = findViewById(R.id.tvAgtPhone);
         tvAgtPosition = findViewById(R.id.tvAgtPosition);
 
-        // string builder for api call
+        // string builder for api to get booking data
         Uri.Builder bookingURL = new Uri.Builder();
         bookingURL.scheme("https").authority(DBHelper.apiAuth())
                 .appendPath("api")
@@ -84,6 +84,7 @@ public class BookingDetailActivity extends AppCompatActivity
                 tvDestination, tvBasePrice, tvAgencyCommission, tvDescription, tvStartDate, tvEndDate,
                 tvClassName);
 
+        // get customer data for selected booking
         Uri.Builder customerURL = new Uri.Builder();
         customerURL.scheme("https").authority(DBHelper.apiAuth())
                 .appendPath("api")

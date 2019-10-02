@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Travel Experts"
+        android:textColor="#015E50"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,12 +19,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="393dp"
-        android:layout_height="335dp"
+        android:layout_width="355dp"
+        android:layout_height="329dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_plane_foreground" />
+        app:srcCompat="@mipmap/ic_planelogo_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

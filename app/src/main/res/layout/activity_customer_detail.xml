@@ -40,7 +40,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -52,7 +53,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -65,7 +67,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:id="@+id/textView14"
@@ -78,7 +81,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:id="@+id/textView15"
@@ -91,7 +95,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:id="@+id/textView16"
@@ -104,7 +109,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -116,7 +122,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -128,7 +135,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:id="@+id/textView19"
@@ -141,7 +149,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -153,7 +162,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:id="@+id/textView21"
@@ -166,7 +176,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
 
                 <TextView
                     android:id="@+id/textView22"
@@ -179,24 +190,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#015E50" />
+
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
                 <Button
                     android:id="@+id/btnSaveCustomer"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#222E6D7D"
+                    android:paddingLeft="16dp"
                     android:paddingTop="16dp"
+                    android:paddingRight="16dp"
                     android:paddingBottom="16dp"
+                    android:textColor="#00838F"
                     android:text="Save Changes"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <Button
                     android:id="@+id/btnCancel"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#222E6D7D"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#00838F"
                     android:text="@android:string/cancel"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-
+            </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

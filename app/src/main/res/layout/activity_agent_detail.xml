@@ -31,6 +31,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft="16dp"
             android:text="Name:"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -47,8 +48,8 @@
             android:id="@+id/tvAgntMiddleInitial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:paddingLeft="16dp"
+            android:layout_marginStart="1dp"
+            android:paddingLeft="2dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="@+id/tvAgntFirstName"
             app:layout_constraintStart_toEndOf="@+id/tvAgntFirstName" />
@@ -57,8 +58,8 @@
             android:id="@+id/tvAgntLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:paddingLeft="16dp"
+            android:layout_marginStart="1dp"
+            android:paddingLeft="2dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="@+id/tvAgntMiddleInitial"
             app:layout_constraintStart_toEndOf="@+id/tvAgntMiddleInitial" />
@@ -70,6 +71,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft="16dp"
             android:text="Phone:"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAgntFirstName" />
 
@@ -90,6 +92,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft="16dp"
             android:text="Email:"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAgntPhone" />
 
@@ -110,6 +113,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft="16dp"
             android:text="Position:"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAgntEmail" />
 
@@ -130,6 +134,7 @@
             android:layout_marginTop="8dp"
             android:paddingLeft="16dp"
             android:text="Agency:"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAgntPosition" />
 
@@ -163,6 +168,7 @@
             android:layout_marginTop="16dp"
             android:paddingLeft="16dp"
             android:text="Total Sales:"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAgntAgency" />
 
@@ -181,6 +187,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:text="Total Commission:"
+            android:textColor="#4A0C0B0B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
@@ -199,7 +206,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:background="#d7f5d5"
+            android:background="#e1ede7"
             android:fadeScrollbars="true"
             android:fastScrollAlwaysVisible="true"
             android:fastScrollEnabled="true"
